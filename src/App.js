@@ -7,7 +7,7 @@ import Lista from './components/pages/Lista/Lista'
 import Header from './components/Header/Header'
 import { createGlobalStyle } from "styled-components"
 import Background from './components/img/ninjaWallpaper.jpg'
-import {Head, BtnHead, BtnDiv, Titulo} from './styled'
+import {Head, BtnHead, Titulo} from './styled'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -78,12 +78,12 @@ export default class App extends React.Component {
     return (
       <div>
         <GlobalStyle/>
-        <Head>
-                <Titulo>LabeNinjas</Titulo>
-                <BtnDiv>
+            <Head>
+                <h1>LabeNinjas</h1>
+                <div>
                 <BtnHead onClick={()=> this.mudaTela('home')} >Home</BtnHead>&nbsp;&nbsp;&nbsp;
                 <BtnHead onClick={()=> this.mudaTela('carrinho')} >Carrinho</BtnHead>
-                </BtnDiv>
+                </div>
             </Head>
         {this.renderizaTela()}
       </div>

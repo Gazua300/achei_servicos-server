@@ -1,5 +1,5 @@
 import React from 'react'
-import {Voltar, QuadroLista, BtnLista, InputDiv} from './styled'
+import {Voltar, QuadroLista, BtnLista, InputDiv, BtnVoltar} from './styled'
 import axios from 'axios'
 import {BASE_URL, headers} from '../../../constants/urls'
 import {convertDate} from '../../../utilidades/util'
@@ -68,16 +68,12 @@ export default class Lista extends React.Component{
         return <div>
             <InputDiv>
             <input type='text' placeholder='Valor mínimo'
-            style={{width: '270px', height: '30px', background: 'transparent', marginRight: '45px'}}
-            value={this.state.minVal} onChange={this.mudarMinVal} />
-            <input type='text' placeholder='Valor máximo'
-            style={{width: '270px', height: '30px', background: 'transparent', marginRight: '45px'}}
-            value={this.state.maxVal} onChange={this.mudarMaxVal} />
-            <input type='text' placeholder='Busca por título ou descrição'
-            style={{width: '270px', height: '30px', background: 'transparent', marginRight: '45px'}}
-            value={this.state.busca} onChange={this.mudarBusca} />
-            <select style={{width: '270px', height: '30px', background: 'transparent', color: 'gray'}}
-            value={this.state.ordem} onChange={this.mudarOrdem} >
+            value={this.state.minVal} onChange={this.mudarMinVal}/>
+            <input type='text' placeholder='Valor máximo' style={{marginLeft:'95px'}}
+            value={this.state.maxVal} onChange={this.mudarMaxVal}/>
+            <input type='text' placeholder='Título' style={{marginLeft:'80px',
+            width:'100px'}} value={this.state.busca} onChange={this.mudarBusca}/>
+            <select value={this.state.ordem} onChange={this.mudarOrdem}>
             <option>Sem ordenção</option>
             <option>Sem ordenção</option>
             <option>Sem ordenção</option>
@@ -85,7 +81,9 @@ export default class Lista extends React.Component{
             <option>Sem ordenção</option>
             </select>
             </InputDiv>
-            <Voltar onClick={()=> this.props.mudaTela('cadastro')} >Voltar</Voltar><br/>
+            <BtnVoltar>
+                <Voltar onClick={()=> this.props.mudaTela('cadastro')} >Voltar</Voltar><br/>
+            </BtnVoltar>
             {mostrar}                                   
         </div>
     }
