@@ -59,29 +59,25 @@ export default class Cadastro extends React.Component{
     render(){
         return <div>
             <Corpo>
-                <h1>Lista de Serviços</h1>
+                <h1>Cadastrar um serviço</h1>
                 
-                    <p><input value={this.state.titulo} onChange={this.mudarTitulo} 
-                    style={{width: '300px', height: '30px', background: 'transparent', color:'whitesmoke', fontSize:'1.2rem'}} type="text" placeholder='Título'/></p>
-                    
+                    <p><input value={this.state.titulo} onChange={this.mudarTitulo}
+                    type="text" placeholder='Título'/></p>                    
                     <input value={this.state.descricao} onChange={this.mudarDescricao} 
-                    type='text' placeholder='Descrição' style={{width: '300px', height: '30px', background: 'transparent', color:'whitesmoke', fontSize:'1.2rem'}}/>
-                    
+                    type='text' placeholder='Descrição' />                    
                     <p><input value={this.state.preco} onChange={this.mudarPreco} placeholder='Preço'
-                    type='number' min='0' style={{width: '300px', height: '30px', background: 'transparent', color:'whitesmoke', fontSize:'1.2rem'}}/> </p>
-                
+                    type='number' min='0'/> </p>                
                 <select value={this.state.pagamento} onChange={this.mudarPagamento} 
-                style={{width: '300px', background: 'transparent', color: 'gray', color:'whitesmoke', fontSize:'1.2rem'}} multiple >
+                style={{width: '250px', background: 'transparent', color: 'gray', color:'whitesmoke', fontSize:'1rem'}} multiple >
                     <option>Cartão de Crédito</option>
                     <option>Cartão de Débito</option>
                     <option>PayPal</option>
                     <option>Boleto</option>
                     <option>Pix</option>
                 </select>
-                <p><input value={this.state.prazo} onChange={this.mudarData} 
-                style={{width: '300px', height: '30px', background: 'transparent', color:'whitesmoke', fontSize:'1.2rem'}} type='date' /></p>
+                <p><input value={this.state.prazo} onChange={this.mudarData} type='date' /></p>
                 <BtnCadastrar onClick={this.cadastrarServico} >Cadastrar serviço</BtnCadastrar>&nbsp;&nbsp;&nbsp;
-                <BtnCadastrar onClick={()=> this.props.mudaTela('lista')} >Ir para lista</BtnCadastrar>
+                <BtnCadastrar onClick={()=> this.props.mudaTela('lista')} >Ir para lista</BtnCadastrar>                
             </Corpo>            
         </div>
     }
