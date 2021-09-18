@@ -32,7 +32,7 @@ export const BtnLista = styled.button`
     cursor: pointer; 
 `
 export const InputDiv = styled.div`
-    margin: 10px;
+    margin: 15px;
     input{
         width: 200px;
         height: 20px;

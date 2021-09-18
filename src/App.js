@@ -85,6 +85,7 @@ export default class App extends React.Component {
                 <BtnHead onClick={()=> this.mudaTela('carrinho')} >Carrinho</BtnHead>
                 </div>
             </Head>
+            <hr/>
         {this.renderizaTela()}
       </div>
     )

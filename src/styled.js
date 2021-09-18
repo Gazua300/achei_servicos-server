@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const Head = styled.div`
-    border: 1px solid;    
+export const Head = styled.div`    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;        
+    padding: 5px;
+    margin-bottom: -15px;        
 `
 export const BtnHead = styled.button`
     height: 40px;
