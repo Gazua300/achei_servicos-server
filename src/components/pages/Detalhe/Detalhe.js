@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../Header/Header'
-import {Voltar, DetalheCard, Titulo} from './styled'
+import {Voltar, DetalheCard, Titulo, DivBtn} from './styled'
 import axios from 'axios'
 import {BASE_URL, headers} from '../../../constants/urls'
 import {convertDate} from '../../../utilidades/util'
@@ -37,7 +37,9 @@ export default class Detalhe extends React.Component{
             <p><b>Prazo:</b> {this.state.servico.dueDate} </p>
             <b>Formas de pagamento:</b> {pagamento}
             </DetalheCard>
-            <Voltar onClick={()=> this.props.mudaTela('lista')} >Voltar</Voltar>
+            <DivBtn>
+                <Voltar onClick={()=> this.props.mudaTela('lista')} >Voltar</Voltar>
+            </DivBtn>
         </div>
     }
 }

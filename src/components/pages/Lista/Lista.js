@@ -44,18 +44,29 @@ export default class Lista extends React.Component{
             console.log(err.response)
             alert('Something went wrong!')       
         })
-    }
-    
-    /*filtro = ()=>{
-               
-        const novaLista = this.state.listaServicos
-        .filter((servico)=>{
-            servico.price >= Number(this.state.minVal)
-        })
-    }*/
+    }   
 
     render(){
-        const mostrar = this.state.listaServicos.map((servico)=>{
+
+        const filtro = this.state.listaServicos.filter(item=>{
+            return this.state.minVal < item.price
+        }).filter(item=>{
+            return this.state.maxVal === '' || this.state.maxVal >= item.price
+        }).filter(item=>{
+            return this.state.busca === '' || this.state.busca.toLowerCase().includes(item.title.toLowerCase())
+        }).sort((servicoAtual, proximo)=>{
+            switch(this.state.ordem){
+                case 'Título':
+                    return servicoAtual.title.localeCompare(proximo.title)
+                case 'Preço':
+                    return servicoAtual.price - proximo.price
+                case 'Prazo':
+                    return new Date(servicoAtual.dueDate).getTime() - 
+                           new Date(proximo.dueDate).getTime()
+            }
+        })
+
+        const mostrar = filtro.map((servico)=>{
             return <QuadroLista key={servico.id} servico={servico}>            
             <p><b>Título: </b>{servico.title}</p>            
             <b>Preço: R$ </b>{servico.price.toFixed(2)}
@@ -74,16 +85,12 @@ export default class Lista extends React.Component{
             <input type='text' placeholder='Título' style={{marginLeft:'80px',
             width:'100px'}} value={this.state.busca} onChange={this.mudarBusca}/>
             <select value={this.state.ordem} onChange={this.mudarOrdem}>
-            <option>Sem ordenção</option>
-            <option>Sem ordenção</option>
-            <option>Sem ordenção</option>
-            <option>Sem ordenção</option>
-            <option>Sem ordenção</option>
+            <option selected>Sem ordenção</option>
+            <option>Título</option>
+            <option>Preço</option>
+            <option>Prazo</option>
             </select>
-            </InputDiv>
-            <BtnVoltar>
-                <Voltar onClick={()=> this.props.mudaTela('cadastro')} >Voltar</Voltar><br/>
-            </BtnVoltar>
+            </InputDiv>            
             {mostrar}                                   
         </div>
     }
