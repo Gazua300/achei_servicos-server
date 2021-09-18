@@ -1,70 +1,21 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Projeto individual Ninja Marketplace</h1>
+	<b>Descrição: </b>Aplicativo de contratação de serviços, exemplo com empresas e serviços fictícios. Com cadastramento do serviço à se prestar, preço e prazo para realização e formas de pagamento. Segue os detalhes.
+	<ul>
+		<li>Pagina inicial:<p>Introdução do aplicativo, com cabeçalho o qual é padronizao em todas as páginas. Esse cabeçalho leva o nome do app e dois botões, o a homepage, página atual e o botão do carrinho que lea até o carrinho do marketplace onde ficam os serviços que o usuário tem adicionado.
+		<img src="readmeImg/home.png" width="500"><br>
+		No corpo da página há dois botões que levam as páginas seguintes.</p>
+		</li>
+		<li>Cadastro e lista de serviços:
+		A página de cadastro é onde se colhe os dados para adição de um serviço no marketplace. O corpo da página também possui dois botões. O botão cadastrar o serviço que finaliza o cadastramento e outro para a página onde estão listados todos os serviços disponíveis no marketplace.<br>
+		<img src="readmeImg/cadastro.png" width="400">
+		<img src="readmeImg/lista.png" width="400"><br>
+		A página onde estão listados os serviços também possui um filtro composto por 3 campos e um select. Onde é possível filtrar os serviços por valor e título através dos campos e ordenar por data, preço e ordem afabética de título através do select. Em cada serviço há dois botões, um para levar até o carrinho e outro para acessar os detalhes de cada serviços cadastrado.</li>
+	</ul>
+</body>
+</html>
