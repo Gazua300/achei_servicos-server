@@ -2,6 +2,7 @@
 <html>
 <head>
 </head>
+	<title></title>
 <body>
 	<h1>Projeto individual Ninja Marketplace</h1>
 	<b>Descrição: </b>Aplicativo de contratação de serviços, exemplo com empresas e serviços fictícios. Com cadastramento do serviço à se prestar, preço e prazo para realização e formas de pagamento. Segue os detalhes.
