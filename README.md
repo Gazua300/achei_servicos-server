@@ -2,12 +2,12 @@
 <html>
 <head>
 </head>
-	<title></title>
+	
 <body>
 	<h1>Projeto individual Ninja Marketplace</h1>
 	<b>Descrição: </b>Aplicativo de contratação de serviços, exemplo com empresas e serviços fictícios. Com cadastramento do serviço à se prestar, preço e prazo para realização e formas de pagamento. Segue os detalhes.
 	<ul>
-		<li>Pagina inicial:<p>Introdução do aplicativo, com cabeçalho o qual é padronizao em todas as páginas. Esse cabeçalho leva o nome do app e dois botões, o a homepage, página atual e o botão do carrinho que lea até o carrinho do marketplace onde ficam os serviços que o usuário tem adicionado.
+		<li>Pagina inicial:<p>Introdução do aplicativo, com cabeçalho o qual é padronizao em todas as páginas. Esse cabeçalho leva o nome do app e dois botões, o a homepage, página atual e o botão do carrinho que lea até o carrinho do marketplace onde ficam os serviços que o usuário tem adicionado.<br>
 		<img src="readmeImg/home.png" width="500"><br>
 		No corpo da página há dois botões que levam as páginas seguintes.</p>
 		</li>
