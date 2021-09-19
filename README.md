@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
 </head>
 <body>
 	<h1>Projeto individual Ninja Marketplace</h1>
