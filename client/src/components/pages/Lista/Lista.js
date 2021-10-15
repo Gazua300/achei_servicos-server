@@ -35,9 +35,9 @@ export default class Lista extends React.Component{
     
     
     pegarLista = ()=>{
-        axios.get(`${BASE_URL}/jobs`, headers)
+        axios.get(`${BASE_URL}/jobs`)
         .then((res)=>{
-            this.setState({listaServicos: res.data.jobs})
+            this.setState({listaServicos: res.data})
             console.log(res.data)
         })
         .catch((err)=>{
