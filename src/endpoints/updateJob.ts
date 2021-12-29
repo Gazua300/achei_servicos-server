@@ -9,8 +9,6 @@ export const updateJob = async(req:Request, res:Response):Promise<void>=>{
   try{
 
     const { title, description, price, dueDate, payment } = req.body
-    const date = dueDate.split('/')
-    const convertedDate = `${date[2]}-${date[1]}-${date[0]}`
     const token = req.headers.authorization
     const tokenData = new Authentication().tokenData(token as string)
 
@@ -52,7 +50,7 @@ export const updateJob = async(req:Request, res:Response):Promise<void>=>{
       title,
       description,
       price,
-      dueDate: convertedDate,
+      dueDate,
       payment
     }).where({
       id: req.params.id

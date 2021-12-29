@@ -1,7 +1,7 @@
 import React from 'react'
 import {QuadroLista, BtnLista, InputDiv} from './styled'
 import axios from 'axios'
-import {BASE_URL, headers} from '../../../constants/urls'
+import {BASE_URL} from '../../../constants/urls'
 import {convertDate} from '../../../utilidades/util'
 
 
@@ -34,17 +34,29 @@ export default class Lista extends React.Component{
     }
 
     pegarLista =()=>{
-        axios.get(`${BASE_URL}/jobs`, headers)
+        axios.get(`${BASE_URL}/jobs`)
         .then((res)=>{
+            console.log(res.data)
             this.setState({
-                listaServicos:res.data.jobs
+                listaServicos:res.data
             })
-            console.log(res.data.jobs)
            }).catch((err)=>{console.log(err)})
     }
 
+    removerJob = (id)=>{
+      const decide = window.confirm('Tem certeza que deseja excluir este serviço?')
 
-    
+      if(decide){
+        axios.delete(`${BASE_URL}/jobs/${id}`).then(res=>{
+          alert(res.data)
+        }).catch(err=>{
+          alert(err.response.data)
+        })
+      }      
+    }
+
+
+
     render(){
 
         const filtro = this.state.listaServicos.filter(item=>{
@@ -70,7 +82,7 @@ export default class Lista extends React.Component{
             <p><b>Título: </b>{servico.title}</p>
             <b>Preço: R$ </b>{servico.price.toFixed(2)}
             <p><b>Prazo: </b>{convertDate(servico.dueDate)}</p>
-            <BtnLista onClick={()=> this.props.irParaDetalhe(servico.id)} >Detalhe</BtnLista>&nbsp;&nbsp;&nbsp;
+            <BtnLista onClick={()=> this.removerJob(servico.id)}>Excluir</BtnLista>&nbsp;&nbsp;&nbsp;
             <BtnLista onClick={()=> this.props.adicionarNoCarrinho(servico)} >Adicionar ao carrinho</BtnLista>
             </QuadroLista>
         })

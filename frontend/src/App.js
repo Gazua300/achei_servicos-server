@@ -69,6 +69,8 @@ export default class App extends React.Component {
         return <Detalhe mudaTela={this.mudaTela} idServico={this.state.servicoDetalheId} />
       case 'lista':
         return <Lista irParaDetalhe={this.irParaDetalhe} mudaTela={this.mudaTela} adicionarNoCarrinho={this.adicionarNoCarrinho} />
+      default:
+        return <Home mudaTela={this.mudaTela}/>
     }
   }
 

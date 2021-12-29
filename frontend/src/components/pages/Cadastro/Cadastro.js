@@ -1,7 +1,7 @@
 import React from 'react'
 import { BtnCadastrar, Corpo} from "./styled"
 import axios from 'axios'
-import {BASE_URL, headers} from '../../../constants/urls'
+import {BASE_URL} from '../../../constants/urls'
 
 
 export default class Cadastro extends React.Component{
@@ -35,11 +35,11 @@ export default class Cadastro extends React.Component{
             title: this.state.titulo,
             description: this.state.descricao,
             price: Number(this.state.preco),
-            paymentMethods: this.state.pagamento,
+            payment: this.state.pagamento,
             dueDate: this.state.prazo
         }
-
-        axios.post(`${BASE_URL}/jobs`, body, headers)
+console.log(this.state.prazo)
+        axios.post(`http://localhost:3003/jobs`, body)
         .then((res)=>{
             alert(`${this.state.titulo} criado com sucesso!`)
             this.setState({
@@ -52,8 +52,8 @@ export default class Cadastro extends React.Component{
             console.log(res.data)
         })
         .catch((err)=>{
-            alert(err.response.data.message)
-            console.log(err.response.data.message)
+            alert(err.response.data)
+            console.log(err.response.data)
         })
     }
 
