@@ -29,7 +29,7 @@ export const updateJob = async(req:Request, res:Response):Promise<void>=>{
       throw new Error('Em preço deve ser usado somente números!')
     }
 
-    if(new Date(convertedDate) < new Date()){
+    if(new Date(dueDate) < new Date()){
       statusCode = 403
       throw new Error('A data de realização do serviço deve ser superior a data atual')
     }
