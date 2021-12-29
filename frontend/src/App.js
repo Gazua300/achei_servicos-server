@@ -4,10 +4,9 @@ import Cadastro from './components/pages/Cadastro/Cadastro'
 import Carrinho from './components/pages/Carrinho/Carrinho'
 import Detalhe from './components/pages/Detalhe/Detalhe'
 import Lista from './components/pages/Lista/Lista'
-import Header from './components/Header/Header'
 import { createGlobalStyle } from "styled-components"
 import Background from './components/img/ninjaWallpaper.jpg'
-import {Head, BtnHead, Titulo} from './styled'
+import {Head, BtnHead} from './styled'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -27,15 +26,15 @@ export default class App extends React.Component {
       servicoDetalheId: '',
       carrinho: []
   }
-  
+
   mudaTela = (tela)=>{
     this.setState({telaAtual: tela})
   }
-  
+
   irParaDetalhe = (idServico)=>{
       this.setState({telaAtual: 'detalhe', servicoDetalheId: idServico})
   }
-  
+
   adicionarNoCarrinho = (servicoAdicionado)=>{
       const novoCarro = [...this.state.carrinho, servicoAdicionado]
       this.setState({carrinho: novoCarro})

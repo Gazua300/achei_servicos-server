@@ -1,19 +1,17 @@
 import React from 'react'
-import Header from '../../Header/Header'
 import {Voltar, DetalheCard, Titulo, DivBtn} from './styled'
 import axios from 'axios'
 import {BASE_URL, headers} from '../../../constants/urls'
-import {convertDate} from '../../../utilidades/util'
 
 export default class Detalhe extends React.Component{
     state = {
         servico: {}
     }
-    
+
     componentDidMount(){
         this.pegarServico()
     }
-    
+
     pegarServico = ()=>{
         axios.get(`${BASE_URL}/jobs/${this.props.idServico}`, headers)
         .then((res)=>{
@@ -24,13 +22,13 @@ export default class Detalhe extends React.Component{
             console.log(err.response.data.message)
         })
     }
-    
-    render(){       
+
+    render(){
         const pagamento = this.state.servico.paymentMethods && this.state.servico.paymentMethods.map((pago)=>{
             return <li key={pago}>{pago}</li>
         })
         return <div>
-            <DetalheCard>            
+            <DetalheCard>
             <Titulo>{this.state.servico.title}</Titulo>
             <p><b>Descrição:</b> {this.state.servico.description} </p>
             <b>Preço:</b> R$ {this.state.servico.price}

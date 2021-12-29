@@ -1,0 +1,32 @@
+GET http://localhost:3003/jobs
+
+---
+
+POST http://localhost:3003/jobs
+Content-Type: application/json
+
+{
+  "title": "Aulas de inglês",
+  "description": "Aulas de inglês à domicílio",
+  "price": 150,
+  "dueDate": "10/02/2022",
+  "payment": "débito e crédito"
+}
+
+---
+POST http://localhost:3003/jobs/5e9acac9-35af-47bb-9a66-ba7f68281491
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiZmQ3ZDBmMGEtMzlkNS00ZmY5LWJlNWEtM2UzNWQ0YmJkN2I0IiwiaWF0IjoxNjQwODEzNDE0LCJleHAiOjE2NDA4OTk4MTR9.ZeOgnasY4UTkYHKNSLoXS9WJCK3aO0IdLIn_xUfOQVQ
+
+{
+  "title": "Diarista",
+  "description": "Seriço de limpeza doméstica.",
+  "price": 300,
+  "dueDate": "10/01/2022",
+  "payment": "débito, boleto e pix"
+}
+
+---
+DELETE http://localhost:3003/jobs/5e9acac9-35af-47bb-9a66-ba7f68281491
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiZmQ3ZDBmMGEtMzlkNS00ZmY5LWJlNWEtM2UzNWQ0YmJkN2I0IiwiaWF0IjoxNjQwODEzNDE0LCJleHAiOjE2NDA4OTk4MTR9.ZeOgnasY4UTkYHKNSLoXS9WJCK3aO0IdLIn_xUfOQVQ

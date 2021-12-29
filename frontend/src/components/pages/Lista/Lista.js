@@ -1,5 +1,5 @@
 import React from 'react'
-import {Voltar, QuadroLista, BtnLista, InputDiv, BtnVoltar} from './styled'
+import {QuadroLista, BtnLista, InputDiv} from './styled'
 import axios from 'axios'
 import {BASE_URL, headers} from '../../../constants/urls'
 import {convertDate} from '../../../utilidades/util'
@@ -13,13 +13,13 @@ export default class Lista extends React.Component{
         busca: '',
         ordem: ''
     }
-    
+
     componentDidMount(){
         this.pegarLista()
         //this.filtro()
     }
-    
-    
+
+
     mudarMinVal = (e)=>{
         this.setState({minVal: e.target.value})
     }
@@ -32,20 +32,19 @@ export default class Lista extends React.Component{
     mudarOrdem = (e)=>{
         this.setState({ordem: e.target.value})
     }
-    
-    
-    pegarLista = ()=>{
-        axios.get(`${BASE_URL}/jobs`)
-        .then((res)=>{
-            this.setState({listaServicos: res.data})
-            console.log(res.data)
-        })
-        .catch((err)=>{
-            console.log(err.response)
-            alert('Something went wrong!')       
-        })
-    }   
 
+    pegarLista =()=>{
+        axios.get(`${BASE_URL}/jobs`, headers)
+        .then((res)=>{
+            this.setState({
+                listaServicos:res.data.jobs
+            })
+            console.log(res.data.jobs)
+           }).catch((err)=>{console.log(err)})
+    }
+
+
+    
     render(){
 
         const filtro = this.state.listaServicos.filter(item=>{
@@ -61,21 +60,21 @@ export default class Lista extends React.Component{
                 case 'Preço':
                     return servicoAtual.price - proximo.price
                 case 'Prazo':
-                    return new Date(servicoAtual.dueDate).getTime() - 
+                    return new Date(servicoAtual.dueDate).getTime() -
                            new Date(proximo.dueDate).getTime()
             }
         })
 
         const mostrar = filtro.map((servico)=>{
-            return <QuadroLista key={servico.id} servico={servico}>            
-            <p><b>Título: </b>{servico.title}</p>            
+            return <QuadroLista key={servico.id} servico={servico}>
+            <p><b>Título: </b>{servico.title}</p>
             <b>Preço: R$ </b>{servico.price.toFixed(2)}
             <p><b>Prazo: </b>{convertDate(servico.dueDate)}</p>
             <BtnLista onClick={()=> this.props.irParaDetalhe(servico.id)} >Detalhe</BtnLista>&nbsp;&nbsp;&nbsp;
             <BtnLista onClick={()=> this.props.adicionarNoCarrinho(servico)} >Adicionar ao carrinho</BtnLista>
             </QuadroLista>
         })
-        
+
         return <div>
             <InputDiv>
             <input type='text' placeholder='Valor mínimo'
@@ -90,8 +89,8 @@ export default class Lista extends React.Component{
             <option>Preço</option>
             <option>Prazo</option>
             </select>
-            </InputDiv>            
-            {mostrar}                                   
+            </InputDiv>
+            {mostrar}
         </div>
     }
 }

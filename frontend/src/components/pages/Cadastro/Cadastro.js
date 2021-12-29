@@ -3,6 +3,7 @@ import { BtnCadastrar, Corpo} from "./styled"
 import axios from 'axios'
 import {BASE_URL, headers} from '../../../constants/urls'
 
+
 export default class Cadastro extends React.Component{
     state = {
         titulo: '',
@@ -11,7 +12,7 @@ export default class Cadastro extends React.Component{
         pagamento: [],
         prazo: ''
     }
-    
+
     mudarTitulo = (e)=>{
         this.setState({titulo: e.target.value})
     }
@@ -28,7 +29,7 @@ export default class Cadastro extends React.Component{
     mudarData = (e)=>{
         this.setState({prazo: e.target.value})
     }
-    
+
     cadastrarServico = ()=>{
         const body = {
             title: this.state.titulo,
@@ -37,8 +38,8 @@ export default class Cadastro extends React.Component{
             paymentMethods: this.state.pagamento,
             dueDate: this.state.prazo
         }
-        
-        axios.post(`${BASE_URL}/jobs`, body)
+
+        axios.post(`${BASE_URL}/jobs`, body, headers)
         .then((res)=>{
             alert(`${this.state.titulo} criado com sucesso!`)
             this.setState({
@@ -60,15 +61,15 @@ export default class Cadastro extends React.Component{
         return <div>
             <Corpo>
                 <h1>Cadastrar um serviço</h1>
-                
+
                     <p><input value={this.state.titulo} onChange={this.mudarTitulo}
-                    type="text" placeholder='Título'/></p>                    
-                    <input value={this.state.descricao} onChange={this.mudarDescricao} 
-                    type='text' placeholder='Descrição' />                    
+                    type="text" placeholder='Título'/></p>
+                    <input value={this.state.descricao} onChange={this.mudarDescricao}
+                    type='text' placeholder='Descrição' />
                     <p><input value={this.state.preco} onChange={this.mudarPreco} placeholder='Preço'
-                    type='number' min='0'/> </p>                
-                <select value={this.state.pagamento} onChange={this.mudarPagamento} 
-                style={{width: '250px', background: 'transparent', color: 'gray', color:'whitesmoke', fontSize:'1rem'}} multiple >
+                    type='number' min='0'/> </p>
+                <select value={this.state.pagamento} onChange={this.mudarPagamento}
+                style={{width: '250px', background: 'transparent', color:'whitesmoke', fontSize:'1rem'}} multiple >
                     <option>Cartão de Crédito</option>
                     <option>Cartão de Débito</option>
                     <option>PayPal</option>
@@ -77,8 +78,8 @@ export default class Cadastro extends React.Component{
                 </select>
                 <p><input value={this.state.prazo} onChange={this.mudarData} type='date' /></p>
                 <BtnCadastrar onClick={this.cadastrarServico} >Cadastrar serviço</BtnCadastrar>&nbsp;&nbsp;&nbsp;
-                <BtnCadastrar onClick={()=> this.props.mudaTela('lista')} >Ir para lista</BtnCadastrar>                
-            </Corpo>            
+                <BtnCadastrar onClick={()=> this.props.mudaTela('lista')} >Ir para lista</BtnCadastrar>
+            </Corpo>
         </div>
     }
 }
