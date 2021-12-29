@@ -1,5 +1,5 @@
 import { v4 } from 'uuid'
-import jwt from 'jsonwebtoken'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -22,6 +22,6 @@ export class Authentication {
     return jwt.verify(
       token,
       process.env.JWT_KEY as string
-    )
+    ) as JwtPayload
   }
 }

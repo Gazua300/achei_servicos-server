@@ -19,7 +19,7 @@ export const deleteJob = async(req:Request, res:Response):Promise<void>=>{
       id: req.params.id
     })
 
-
+  
     if(tokenData.payload !== job.id){
       statusCode = 403
       throw new Error('Você só pode excluir serviços criados por você mesmo.')
