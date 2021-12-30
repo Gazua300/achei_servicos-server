@@ -32,19 +32,11 @@ Content-Type: application/json
 }
 
 ---
-POST http://localhost:3003/jobs/5e9acac9-35af-47bb-9a66-ba7f68281491
+POST http://localhost:3003/jobs/contract
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiZmQ3ZDBmMGEtMzlkNS00ZmY5LWJlNWEtM2UzNWQ0YmJkN2I0IiwiaWF0IjoxNjQwODEzNDE0LCJleHAiOjE2NDA4OTk4MTR9.ZeOgnasY4UTkYHKNSLoXS9WJCK3aO0IdLIn_xUfOQVQ
 
 {
   "title": "Diarista",
-  "description": "Seriço de limpeza doméstica.",
   "price": 300,
-  "dueDate": "10/01/2022",
-  "payment": "débito, boleto e pix"
+  "tokenKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiZDMyNzFkZWUtZTA1NC00ZTUwLWI5MzUtYzUzMmZiZTJlZmYzIiwiaWF0IjoxNjQwOTA3MjMwLCJleHAiOjE2NDA5OTM2MzB9.GQ9iMjZ1ZmKdy2EH9p9MTBxkxMl1WM3S3pAyCHOhqMU"
 }
-
----
-DELETE http://localhost:3003/jobs/5e9acac9-35af-47bb-9a66-ba7f68281491
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiZmQ3ZDBmMGEtMzlkNS00ZmY5LWJlNWEtM2UzNWQ0YmJkN2I0IiwiaWF0IjoxNjQwODEzNDE0LCJleHAiOjE2NDA4OTk4MTR9.ZeOgnasY4UTkYHKNSLoXS9WJCK3aO0IdLIn_xUfOQVQ

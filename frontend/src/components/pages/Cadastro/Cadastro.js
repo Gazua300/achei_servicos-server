@@ -1,7 +1,7 @@
 import React from 'react'
 import { BtnCadastrar, BtnContainer, Corpo} from "./styled"
 import axios from 'axios'
-import {BASE_URL, headers} from '../../../constants/urls'
+import {BASE_URL} from '../../../constants/urls'
 
 
 export default class Cadastro extends React.Component{
@@ -39,7 +39,7 @@ export default class Cadastro extends React.Component{
             dueDate: this.state.prazo
         }
 
-        axios.post(`${BASE_URL}/jobs`, body, headers)
+        axios.post(`${BASE_URL}/jobs`, body)
         .then((res)=>{
             alert(`${this.state.titulo} criado com sucesso!`)
             localStorage.setItem('token', res.data.access_token)
