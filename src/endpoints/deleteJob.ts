@@ -15,12 +15,17 @@ export const deleteJob = async(req:Request, res:Response):Promise<void>=>{
       throw new Error('Token inválido, expirado ou ausente dos headers!')
     }
 
-    const [job] = await con('labeninja').where({
-      id: req.params.id
+    const [user] = await con('labeninja_users').where({
+      id: tokenData.payload
     })
 
-  
-    if(tokenData.payload !== job.id){
+
+    const [job] = await con('labeninja').where({
+      user_id: user.id
+    })
+
+    
+    if(user.id !== job.user_id){
       statusCode = 403
       throw new Error('Você só pode excluir serviços criados por você mesmo.')
     }

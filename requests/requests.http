@@ -1,7 +1,25 @@
 GET http://localhost:3003/jobs
 
 ---
+POST http://localhost:3003/jobs/signin
+Content-Type: application/json
 
+{
+  "name": "Eu",
+  "email": "eu@email.com",
+  "password": "senha"
+}
+
+---
+POST http://localhost:3003/jobs/login
+Content-Type: application/json
+
+{
+  "email": "eu@email.com",
+  "password": "senha"
+}
+
+---
 POST http://localhost:3003/jobs
 Content-Type: application/json
 

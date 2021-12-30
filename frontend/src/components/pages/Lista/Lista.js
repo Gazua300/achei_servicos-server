@@ -1,7 +1,7 @@
 import React from 'react'
 import {QuadroLista, BtnLista, InputDiv} from './styled'
 import axios from 'axios'
-import {BASE_URL} from '../../../constants/urls'
+import {BASE_URL, headers} from '../../../constants/urls'
 import {convertDate} from '../../../utilidades/util'
 
 
@@ -36,7 +36,6 @@ export default class Lista extends React.Component{
     pegarLista =()=>{
         axios.get(`${BASE_URL}/jobs`)
         .then((res)=>{
-            console.log(res.data)
             this.setState({
                 listaServicos:res.data
             })
@@ -47,12 +46,12 @@ export default class Lista extends React.Component{
       const decide = window.confirm('Tem certeza que deseja excluir este serviço?')
 
       if(decide){
-        axios.delete(`${BASE_URL}/jobs/${id}`).then(res=>{
+        axios.delete(`${BASE_URL}/jobs/${id}`, headers).then(res=>{
           alert(res.data)
         }).catch(err=>{
           alert(err.response.data)
         })
-      }      
+      }
     }
 
 

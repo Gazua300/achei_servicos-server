@@ -1,7 +1,7 @@
 import React from 'react'
-import { BtnCadastrar, Corpo} from "./styled"
+import { BtnCadastrar, BtnContainer, Corpo} from "./styled"
 import axios from 'axios'
-import {BASE_URL} from '../../../constants/urls'
+import {BASE_URL, headers} from '../../../constants/urls'
 
 
 export default class Cadastro extends React.Component{
@@ -38,10 +38,11 @@ export default class Cadastro extends React.Component{
             payment: this.state.pagamento,
             dueDate: this.state.prazo
         }
-console.log(this.state.prazo)
-        axios.post(`http://localhost:3003/jobs`, body)
+
+        axios.post(`${BASE_URL}/jobs`, body, headers)
         .then((res)=>{
             alert(`${this.state.titulo} criado com sucesso!`)
+            localStorage.setItem('token', res.data.access_token)
             this.setState({
                 titulo: '',
                 descricao: '',
@@ -49,13 +50,23 @@ console.log(this.state.prazo)
                 pagamento: [],
                 prazo: ''
             })
-            console.log(res.data)
         })
         .catch((err)=>{
             alert(err.response.data)
             console.log(err.response.data)
         })
     }
+
+
+    logout = ()=>{
+      const decide = window.confirm('Tem certeza que deseja deslogar seu usuário?')
+
+      if(decide){
+        localStorage.clear()
+        this.props.mudaTela('home')
+      }
+    }
+
 
     render(){
         return <div>
@@ -77,8 +88,11 @@ console.log(this.state.prazo)
                     <option>Pix</option>
                 </select>
                 <p><input value={this.state.prazo} onChange={this.mudarData} type='date' /></p>
-                <BtnCadastrar onClick={this.cadastrarServico} >Cadastrar serviço</BtnCadastrar>&nbsp;&nbsp;&nbsp;
-                <BtnCadastrar onClick={()=> this.props.mudaTela('lista')} >Ir para lista</BtnCadastrar>
+                <BtnContainer>
+                  <BtnCadastrar onClick={this.cadastrarServico} >Cadastrar serviço</BtnCadastrar>
+                  <BtnCadastrar onClick={this.logout}>Logout</BtnCadastrar>
+                  <BtnCadastrar onClick={()=> this.props.mudaTela('lista')} >Ir para lista</BtnCadastrar>
+                </BtnContainer>
             </Corpo>
         </div>
     }

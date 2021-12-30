@@ -4,6 +4,7 @@ import Cadastro from './components/pages/Cadastro/Cadastro'
 import Carrinho from './components/pages/Carrinho/Carrinho'
 import Detalhe from './components/pages/Detalhe/Detalhe'
 import Lista from './components/pages/Lista/Lista'
+import Login from './components/pages/Login/Login'
 import { createGlobalStyle } from "styled-components"
 import Background from './components/img/ninjaWallpaper.jpg'
 import {Head, BtnHead} from './styled'
@@ -60,6 +61,8 @@ export default class App extends React.Component {
     switch(this.state.telaAtual){
       case 'home':
         return <Home mudaTela={this.mudaTela} />
+      case 'login':
+        return <Login mudaTela={this.mudaTela}/>
       case 'cadastro':
         return <Cadastro mudaTela={this.mudaTela} />
       case 'carrinho':

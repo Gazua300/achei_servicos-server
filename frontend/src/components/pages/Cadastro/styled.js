@@ -14,17 +14,23 @@ export const Corpo = styled.div`
     	border-radius: 10px;
     }
     div{
-    	align-items: center;    	
+    	align-items: center;
     }
 `
 export const BtnCadastrar = styled.button`
 
     height: 40px;
-    width: 120px;    
+    width: 120px;
     border-radius: 30px;
     background-color: #151626;
-    color: whitesmoke; 
+    color: whitesmoke;
     cursor: pointer;
-     
 `
-
+export const BtnContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 40px;
+	margin-left: -55px;
+	width: 40vw;
+`
