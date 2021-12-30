@@ -2,8 +2,6 @@ import express from 'express'
 import cors from 'cors'
 import { getAllJobs } from './endpoints/getAllJobs'
 import { createJob } from   './endpoints/createJob'
-import { updateJob } from './endpoints/updateJob'
-import { deleteJob } from './endpoints/deleteJob'
 import { signin } from './endpoints/signin'
 import { login } from './endpoints/login'
 
@@ -18,9 +16,6 @@ app.get('/jobs', getAllJobs)
 app.post('/jobs/signin', signin)
 app.post('/jobs/login', login)
 app.post('/jobs', createJob)
-app.post('/jobs/:id', updateJob)
-app.delete('/jobs/:id', deleteJob)
-
 
 
 

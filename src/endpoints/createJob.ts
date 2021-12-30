@@ -7,17 +7,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const token = req.headers.authorization
-    const tokenData = new Authentication().tokenData(token as string)
-
-
     const { title, description, price, dueDate, payment } = req.body
-
-
-    if(!token){
-      statusCode = 401
-      throw new Error('Token invávlido, expirado ou ausente dos headers!')
-    }
 
 
     if(!title || !description || !price || !dueDate || !payment){
@@ -35,9 +25,6 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       throw new Error('A data de realização do serviço deve ser superior a data atual')
     }
 
-    const [user] = await con('labeninja_users').where({
-      id: tokenData.payload
-    })
 
     const id = new Authentication().generateId()
 
@@ -47,8 +34,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       description,
       price,
       dueDate,
-      payment,
-      user_id: user.id
+      payment
     })
 
     res.status(200).send(`${title} registrado com sucesso.`)
