@@ -19,3 +19,5 @@
 	</ul>
 </body>
 </html>
+
+> Link da documentação para API do backend da aplicação: https://documenter.getpostman.com/view/11884929/UVRGF4ve
