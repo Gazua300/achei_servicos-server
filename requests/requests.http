@@ -32,11 +32,10 @@ Content-Type: application/json
 }
 
 ---
-POST http://localhost:3003/jobs/contract
+POST http://localhost:3003/jobs/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiZDMyNzFkZWUtZTA1NC00ZTUwLWI5MzUtYzUzMmZiZTJlZmYzIiwiaWF0IjoxNjQwOTA3MjMwLCJleHAiOjE2NDA5OTM2MzB9.GQ9iMjZ1ZmKdy2EH9p9MTBxkxMl1WM3S3pAyCHOhqMU
 Content-Type: application/json
 
 {
   "title": "Diarista",
-  "price": 300,
-  "tokenKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiZDMyNzFkZWUtZTA1NC00ZTUwLWI5MzUtYzUzMmZiZTJlZmYzIiwiaWF0IjoxNjQwOTA3MjMwLCJleHAiOjE2NDA5OTM2MzB9.GQ9iMjZ1ZmKdy2EH9p9MTBxkxMl1WM3S3pAyCHOhqMU"
+  "price": 300
 }

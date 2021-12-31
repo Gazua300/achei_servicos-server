@@ -7,7 +7,7 @@ export const QuadroCarro = styled.div`
     padding: 15px;
     border-radius: 10px;
     display: flex;
-    justify-content: space-between    
+    justify-content: space-between
 `
 export const QuadroFinal = styled.div`
     border: 1px solid;
@@ -16,12 +16,16 @@ export const QuadroFinal = styled.div`
     padding: 15px;
     border-radius: 10px;
     display: flex;
-    justify-content: space-between    
+    justify-content: space-between
 `
 export const Remove = styled.button`
     border-radius: 30px;
     background-color: #151626;
-    color: whitesmoke; 
-    cursor: pointer;    
+    color: whitesmoke;
+    cursor: pointer;
 `
-
+export const BtnContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 15vw;
+`

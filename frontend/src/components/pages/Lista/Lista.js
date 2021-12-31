@@ -43,10 +43,6 @@ export default class Lista extends React.Component{
     }
 
 
-    contratarServico = (job)=>{
-      alert(`${job.title} contratado com sucesso!`)
-    }
-
 
     render(){
 
@@ -75,7 +71,7 @@ export default class Lista extends React.Component{
             <p><b>Título: </b>{servico.title}</p>
             <b>Preço: R$ </b>{servico.price.toFixed(2)}
             <p><b>Prazo: </b>{convertDate(servico.dueDate)}</p>
-            <BtnLista onClick={()=> this.contratarServico(servico)} >Contratar</BtnLista>&nbsp;&nbsp;&nbsp;
+            <BtnLista onClick={()=> this.props.contratarServico(servico)} >Contratar</BtnLista>&nbsp;&nbsp;&nbsp;
             <BtnLista onClick={()=> this.props.adicionarNoCarrinho(servico)}>Adicionar ao carrinho</BtnLista>
             </QuadroLista>
         })

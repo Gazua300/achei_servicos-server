@@ -1,4 +1,6 @@
 import React from "react"
+import axios from 'axios'
+import { BASE_URL } from './constants/urls'
 import Home from './components/pages/Home/Home'
 import Cadastro from './components/pages/Cadastro/Cadastro'
 import Carrinho from './components/pages/Carrinho/Carrinho'
@@ -41,6 +43,7 @@ export default class App extends React.Component {
       this.setState({carrinho: novoCarro})
       alert(`O serviço ${servicoAdicionado.title} foi adicionado ao carrinho.`)
   }
+
   removerDoCarrinho = (id)=>{
       const confirme = window.confirm('Tem certeza que deseja remover o seriço?')
       if(confirme){
@@ -50,11 +53,25 @@ export default class App extends React.Component {
           this.setState({carrinho: novoCarro})
       }
   }
+
   limparCarrinho = ()=>{
       const confirme = window.confirm('Isso irá apagar todos os itens. Desjea continuar?')
       if(confirme){
           this.setState({carrinho: []})
       }
+  }
+
+  contratarServico = (job)=>{
+    const token = localStorage.getItem('token')
+    const body = {
+      title: job.title,
+      price: job.price
+    }
+    axios.post(`${BASE_URL}/jobs/${token}`, body).then(res=>{
+      alert(res.data)
+    }).catch(err=>{
+      alert(err.response.data)
+    })
   }
 
   renderizaTela = ()=>{
@@ -67,11 +84,12 @@ export default class App extends React.Component {
         return <Cadastro mudaTela={this.mudaTela} />
       case 'carrinho':
         return <Carrinho mudaTela={this.mudaTela} limparCarrinho={this.limparCarrinho} removerDoCarrinho={this.removerDoCarrinho}
-        carrinho={this.state.carrinho} />
+        carrinho={this.state.carrinho} contratarServico={this.contratarServico}/>
       case 'detalhe':
         return <Detalhe mudaTela={this.mudaTela} idServico={this.state.servicoDetalheId} />
       case 'lista':
-        return <Lista irParaDetalhe={this.irParaDetalhe} mudaTela={this.mudaTela} adicionarNoCarrinho={this.adicionarNoCarrinho} />
+        return <Lista irParaDetalhe={this.irParaDetalhe} mudaTela={this.mudaTela} adicionarNoCarrinho={this.adicionarNoCarrinho}
+        contratarServico={this.contratarServico} />
       default:
         return <Home mudaTela={this.mudaTela}/>
     }
