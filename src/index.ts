@@ -17,7 +17,7 @@ app.get('/jobs', getAllJobs)
 app.post('/jobs/signin', signin)
 app.post('/jobs/login', login)
 app.post('/jobs', createJob)
-app.post('/jobs/contract', getJob)
+app.post('/jobs/:token', getJob)
 
 
 

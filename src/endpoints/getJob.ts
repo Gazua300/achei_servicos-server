@@ -7,14 +7,14 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const { title, price, tokenKey } = req.body
+    const { title, price } = req.body
 
-    if(!title || !price || !tokenKey){
+    if(!title || !price){
       statusCode = 403
       throw new Error('Preencha os campos.')
     }
 
-    const tokenData = new Authentication().tokenData(tokenKey)
+    const tokenData = new Authentication().tokenData(req.params.token)
 
 
     const [user] = await con('labeninja_users').where({
