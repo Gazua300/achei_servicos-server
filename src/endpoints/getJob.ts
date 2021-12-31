@@ -28,7 +28,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       id,
       title,
       price,
-      user_id: tokenKey
+      user_id: user.id
     })
 
     res.status(200).send(`Serviço ${title} contratado com seucesso.`)
