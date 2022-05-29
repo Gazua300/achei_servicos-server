@@ -4,6 +4,7 @@ import { getAllJobs } from './endpoints/getAllJobs'
 import { createJob } from   './endpoints/createJob'
 import { getJob } from './endpoints/getJob'
 import { getJobByEmail } from './endpoints/getJobByEmail'
+import { getJobById } from './endpoints/getJobById'
 
 
 
@@ -13,6 +14,7 @@ app.use(cors())
 
 
 app.get('/jobs', getAllJobs)
+app.get('/job/:id', getJobById)
 app.post('/jobs', createJob)
 app.post('/job/', getJob)
 app.post('/hired', getJobByEmail)
