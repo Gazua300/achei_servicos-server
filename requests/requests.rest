@@ -1,0 +1,31 @@
+GET http://localhost:3003/jobs
+
+###
+POST http://localhost:3003/jobs
+Content-Type: application/json
+
+{
+  "title": "Aulas de inglês",
+  "description": "Aulas de inglês à domicílio",
+  "price": 150,
+  "dueDate": "10/02/2022",
+  "payment": "débito e crédito"
+}
+
+###
+POST http://localhost:3003/job
+Content-Type: application/json
+
+{
+  "name": "100",
+  "email": "outro@gmail.com",
+  "payment": "débido, crédito, pix"
+}
+
+###
+POST http://localhost:3003/hired
+Content-Type: application/json
+
+{
+    "email": "outr@gmail.com"
+}

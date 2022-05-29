@@ -1,15 +1,9 @@
-import React from "react"
-import axios from 'axios'
-import { BASE_URL } from './constants/urls'
-import Home from './components/pages/Home/Home'
-import Cadastro from './components/pages/Cadastro/Cadastro'
-import Carrinho from './components/pages/Carrinho/Carrinho'
-import Detalhe from './components/pages/Detalhe/Detalhe'
-import Lista from './components/pages/Lista/Lista'
-import Login from './components/pages/Login/Login'
+import { BrowserRouter, Link } from "react-router-dom"
 import { createGlobalStyle } from "styled-components"
+import { GlobalState } from "./global/Context"
+import Router from "./routes/Router"
 import Background from './components/img/ninjaWallpaper.jpg'
-import {Head, BtnHead} from './styled'
+import styled from 'styled-components'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -22,94 +16,84 @@ const GlobalStyle = createGlobalStyle`
     color: #918bcb;
   }
 `
-
-export default class App extends React.Component {
-  state = {
-      telaAtual: 'home',
-      servicoDetalheId: '',
-      carrinho: []
-  }
-
-  mudaTela = (tela)=>{
-    this.setState({telaAtual: tela})
-  }
-
-  irParaDetalhe = (idServico)=>{
-      this.setState({telaAtual: 'detalhe', servicoDetalheId: idServico})
-  }
-
-  adicionarNoCarrinho = (servicoAdicionado)=>{
-      const novoCarro = [...this.state.carrinho, servicoAdicionado]
-      this.setState({carrinho: novoCarro})
-      alert(`O serviço ${servicoAdicionado.title} foi adicionado ao carrinho.`)
-  }
-
-  removerDoCarrinho = (id)=>{
-      const confirme = window.confirm('Tem certeza que deseja remover o seriço?')
-      if(confirme){
-          const novoCarro = this.state.carrinho.filter((carroItem)=>{
-              return carroItem.id !== id
-          })
-          this.setState({carrinho: novoCarro})
-      }
-  }
-
-  limparCarrinho = ()=>{
-      const confirme = window.confirm('Isso irá apagar todos os itens. Desjea continuar?')
-      if(confirme){
-          this.setState({carrinho: []})
-      }
-  }
-
-  contratarServico = (job)=>{
-    const token = localStorage.getItem('token')
-    const body = {
-      title: job.title,
-      price: job.price
-    }
-    axios.post(`${BASE_URL}/jobs/${token}`, body).then(res=>{
-      alert(res.data)
-    }).catch(err=>{
-      alert(err.response.data)
-    })
-  }
-
-  renderizaTela = ()=>{
-    switch(this.state.telaAtual){
-      case 'home':
-        return <Home mudaTela={this.mudaTela} />
-      case 'login':
-        return <Login mudaTela={this.mudaTela}/>
-      case 'cadastro':
-        return <Cadastro mudaTela={this.mudaTela} />
-      case 'carrinho':
-        return <Carrinho mudaTela={this.mudaTela} limparCarrinho={this.limparCarrinho} removerDoCarrinho={this.removerDoCarrinho}
-        carrinho={this.state.carrinho} contratarServico={this.contratarServico}/>
-      case 'detalhe':
-        return <Detalhe mudaTela={this.mudaTela} idServico={this.state.servicoDetalheId} />
-      case 'lista':
-        return <Lista irParaDetalhe={this.irParaDetalhe} mudaTela={this.mudaTela} adicionarNoCarrinho={this.adicionarNoCarrinho}
-        contratarServico={this.contratarServico} />
-      default:
-        return <Home mudaTela={this.mudaTela}/>
-    }
-  }
+const Head = styled.div`    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: -15px;        
+`
+const BtnHead = styled.button`
+  margin: 5px;
+  height: 40px;
+  width: 90px;
+  border-radius: 30px;
+  background-color: #151626;
+  color: whitesmoke;
+  opacity: 0.7; 
+  font-size: 14pt;
+  cursor: pointer;       
+`
 
 
-  render(){
+const App = ()=> {
+  
+  // irParaDetalhe = (idServico)=>{
+  //     this.setState({telaAtual: 'detalhe', servicoDetalheId: idServico})
+  // }
+
+  // adicionarNoCarrinho = (servicoAdicionado)=>{
+  //     const novoCarro = [...this.state.carrinho, servicoAdicionado]
+  //     this.setState({carrinho: novoCarro})
+  //     alert(`O serviço ${servicoAdicionado.title} foi adicionado ao carrinho.`)
+  // }
+
+  // removerDoCarrinho = (id)=>{
+  //     const confirme = window.confirm('Tem certeza que deseja remover o seriço?')
+  //     if(confirme){
+  //         const novoCarro = this.state.carrinho.filter((carroItem)=>{
+  //             return carroItem.id !== id
+  //         })
+  //         this.setState({carrinho: novoCarro})
+  //     }
+  // }
+
+  // limparCarrinho = ()=>{
+  //     const confirme = window.confirm('Isso irá apagar todos os itens. Desjea continuar?')
+  //     if(confirme){
+  //         this.setState({carrinho: []})
+  //     }
+  // }
+
+  // contratarServico = (job)=>{
+  //   const token = localStorage.getItem('token')
+  //   const body = {
+  //     title: job.title,
+  //     price: job.price
+  //   }
+  //   axios.post(`${BASE_URL}/jobs/${token}`, body).then(res=>{
+  //     alert(res.data)
+  //   }).catch(err=>{
+  //     alert(err.response.data)
+  //   })
+  // }
+  
+  // }
     return (
-      <div>
-        <GlobalStyle/>
-            <Head>
+      <BrowserRouter>
+        <GlobalState>
+          <GlobalStyle/>
+              <Head>
                 <h1>LabeNinjas</h1>
                 <div>
-                <BtnHead onClick={()=> this.mudaTela('home')} >Home</BtnHead>&nbsp;&nbsp;&nbsp;
-                <BtnHead onClick={()=> this.mudaTela('carrinho')} >Carrinho</BtnHead>
+                  <Link to={'/'}><BtnHead>Home</BtnHead></Link>
+                  <Link to={'/carrinho'}><BtnHead>Carrinho</BtnHead></Link>
                 </div>
-            </Head>
-            <hr/>
-        {this.renderizaTela()}
-      </div>
+              </Head>
+              <hr/>
+            <Router/>
+        </GlobalState>
+      </BrowserRouter>
     )
-  }
 }
+export default App

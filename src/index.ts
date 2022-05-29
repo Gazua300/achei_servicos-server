@@ -2,9 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import { getAllJobs } from './endpoints/getAllJobs'
 import { createJob } from   './endpoints/createJob'
-import { signin } from './endpoints/signin'
-import { login } from './endpoints/login'
 import { getJob } from './endpoints/getJob'
+import { getJobByEmail } from './endpoints/getJobByEmail'
 
 
 
@@ -14,10 +13,9 @@ app.use(cors())
 
 
 app.get('/jobs', getAllJobs)
-app.post('/jobs/signin', signin)
-app.post('/jobs/login', login)
 app.post('/jobs', createJob)
-app.post('/jobs/:token', getJob)
+app.post('/job/', getJob)
+app.post('/hired', getJobByEmail)
 
 
 

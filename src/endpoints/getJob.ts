@@ -7,31 +7,25 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const { title, price } = req.body
+    const { name, email, payment } = req.body
 
-    if(!title || !price){
+    if(!name || !email || !payment){
       statusCode = 403
       throw new Error('Preencha os campos.')
     }
-
-    const tokenData = new Authentication().tokenData(req.params.token)
-
-
-    const [user] = await con('labeninja_users').where({
-      id: tokenData.payload
-    })
 
 
     const id = new Authentication().generateId()
 
     await con('labeninja_contratado').insert({
       id,
-      title,
-      price,
-      user_id: user.id
+      name,
+      email,
+      payment,
+      date: new Date()
     })
 
-    res.status(200).send(`Serviço ${title} contratado com seucesso.`)
+    res.status(200).send(id)
   }catch(error:any){
     res.status(statusCode).send(error.message || error.sqlMessage)
   }
