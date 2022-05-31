@@ -40,6 +40,7 @@ export const CartaoContainer = styled.div`
     margin-top: 30px;
 `
 export const Cartao = styled.div`
+    color: black;
     border: 1px solid;
     box-shadow: 2px 2px 4px #918bcb;    
     width: 230px;

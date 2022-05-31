@@ -11,6 +11,7 @@ export const Botao = styled.button`
     background-color: #151626;
     color: whitesmoke;
     cursor: pointer;
+    margin: 10px;
          
 `
 export const P = styled.p`

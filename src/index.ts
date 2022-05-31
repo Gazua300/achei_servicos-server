@@ -16,7 +16,7 @@ app.use(cors())
 app.get('/jobs', getAllJobs)
 app.get('/job/:id', getJobById)
 app.post('/jobs', createJob)
-app.post('/job/', getJob)
+app.post('/job', getJob)
 app.post('/hired', getJobByEmail)
 
 
@@ -24,5 +24,5 @@ app.post('/hired', getJobByEmail)
 
 
 app.listen(process.env.PORT || 3003, ()=>{
-  console.log('Server runing at http://localhost:3003/')
+  console.log('Server runing at http://localhost:3003')
 })

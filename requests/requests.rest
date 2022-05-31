@@ -29,3 +29,6 @@ Content-Type: application/json
 {
     "email": "outr@gmail.com"
 }
+
+###
+GET http://localhost:3003/job/5ffd42db-5d15c-9410-f3346e36a87a

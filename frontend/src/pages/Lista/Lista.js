@@ -13,7 +13,7 @@ import {
 
 
 const Lista = ()=>{
-    const { states } = useContext(Context)
+    const { states, requests } = useContext(Context)
     const servicos = states.servicos
     const [minVal, setMinVal] = useState('')
     const [maxVal, setMaxVal] = useState('')
@@ -54,7 +54,6 @@ const Lista = ()=>{
                 return false
         }
     })
-    console.log(filtro)
         
 
     return(
@@ -81,7 +80,7 @@ const Lista = ()=>{
                         <Nome>{servico.title}</Nome>
                         <p><b>Preço: </b>R$ {servico.price}</p>
                         <b>Prazo: </b>{convertDate(servico.dueDate)}
-                        <p><BtnCartao>Contratar</BtnCartao>&nbsp;&nbsp;
+                        <p><BtnCartao onClick={()=> requests.contratarServico(servico.id)}>Contratar</BtnCartao>&nbsp;&nbsp;
                         <BtnCartao>Adicionar ao carrinho</BtnCartao></p>
                     </Cartao>
                 )
