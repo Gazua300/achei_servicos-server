@@ -27,16 +27,21 @@ const Detalhe = ()=>{
     const contratarServico = (e)=>{
         e.preventDefault()
 
-        const body = {
-            name: form.name,
-            email: form.email,
-            payment: form.payment
+        if(form.payment === 'Pagamento'){
+            alert('Selecione uma forma de pagamento.')
+        }else{
+            const body = {
+                name: form.name,
+                email: form.email,
+                payment: form.payment
+            }
+            axios.post(`${BASE_URL}/job`, body).then(res=>{
+                alert(`${servico.title} contratado.`)
+            }).catch(e=>{
+                alert(e.response.data)
+            })
         }
-        axios.post(`${BASE_URL}/job`, body).then(res=>{
-            console.log(res.data)
-        }).catch(e=>{
-            alert(e.response.data)
-        })
+        
     }
 
     return(

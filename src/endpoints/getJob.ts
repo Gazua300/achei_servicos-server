@@ -7,7 +7,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const { name, email, payment } = req.body
+    const { name, email, payment, job } = req.body
 
     if(!name || !email || !payment){
       statusCode = 403
@@ -22,6 +22,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       name,
       email,
       payment,
+      job,
       date: new Date()
     })
 
