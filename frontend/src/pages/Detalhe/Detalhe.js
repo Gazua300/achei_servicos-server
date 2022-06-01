@@ -1,15 +1,33 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useRef } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Context from '../../global/Context'
-import { Container, Voltar, DetalheCard, Titulo, DivBtn, Contratar } from './styled'
 import { BASE_URL } from '../../constants/urls'
+import { convertDate } from '../../utilidades/util'
+import { 
+    Container,
+    Voltar,
+    DetalheCard,
+    Titulo,
+    DivBtn,
+    Contratar,
+    Paragrafo,
+    ConsultaEmail
+ } from './styled'
 
 
 const Detalhe = ()=>{
     const { states } = useContext(Context)
     const servico = states.servico
     const navigate = useNavigate()
+    const resultado = useRef(null)
+    const consulta = useRef(null)
+    const [jobId, setJobId] = useState('')
+    const [id, setId] = useState('')
+    const [email, setEmail] = useState('')
+    const [servicos, setServicos] = useState([])
+    console.log(servicos)
+    console.log(id)
     const [form, setForm] = useState({
         name:'',
         email:'',
@@ -21,9 +39,16 @@ const Detalhe = ()=>{
         setForm({...form, [name]:value})
     }
 
+    const handleEmail = (e)=>{
+        setEmail(e.target.value)
+    }
+
+    const handleId = (e)=>{
+        setId(e.target.value)
+    }
+
+
     
-
-
     const contratarServico = (e)=>{
         e.preventDefault()
 
@@ -33,16 +58,44 @@ const Detalhe = ()=>{
             const body = {
                 name: form.name,
                 email: form.email,
-                payment: form.payment
+                payment: form.payment,
+                job: servico.title
             }
             axios.post(`${BASE_URL}/job`, body).then(res=>{
+                setJobId(res.data)
                 alert(`${servico.title} contratado.`)
+                resultado.current.style.display = 'block'        
             }).catch(e=>{
                 alert(e.response.data)
             })
         }
-        
+
     }
+
+    const consultarServico = (e)=>{
+        e.preventDefault()
+
+        const body = {
+            email
+        }
+        axios.post(`${BASE_URL}/hired`, body).then(res=>{
+            setServicos(res.data)
+            consulta.current.style.display = 'block'
+        }).catch(e=>{
+            alert(e.response.data)
+        })
+    }
+
+    const servicoPorId = (e)=>{
+        e.preventDefault()
+
+        axios.get(`${BASE_URL}/job/${id}`).then(res=>{
+            console.log(res.data)
+        }).catch(e=>{
+            alert(e.response.data)
+        })
+    }
+    
 
     return(
         <Container>
@@ -50,26 +103,68 @@ const Detalhe = ()=>{
                 <Titulo>{servico.title}</Titulo>
                 <p><b>Descrição: </b>{servico.description}</p>
                 <b>Preço: </b>R$ {servico.price}.00
-                <p><b>Prazo: </b> {servico.dueDate}</p>
+                <p><b>Prazo: </b> {convertDate(servico.dueDate)}</p>
                 <b>Formas de pagamento: </b>{servico.payment}
             </DetalheCard>
-            <form onSubmit={contratarServico}>
-                <fieldset>
-                    <legend>Contrar serviço</legend>
-                    <input type='text' name='name' value={form.name} onChange={onChange}
-                        placeholder='Nome' required/><br/>
-                    <input type='email' name='email' value={form.email} onChange={onChange}
-                        placeholder='nome@email.com' required/><br/>
-                    <select name='payment' value={form.payment} onChange={onChange} required>
-                        <option defaultChecked>Pagamento</option>
-                        <option>Débito</option>
-                        <option>Crédito</option>
-                        <option>Pix</option>
-                        <option>Boleto</option>
-                    </select>
-                <Contratar>Contratar</Contratar>
-                </fieldset>
-            </form>
+            <div className='form-container'>
+                <div className='forms-consulta'>
+                    <form onSubmit={contratarServico}>
+                        <fieldset>
+                            <legend>Contrar serviço</legend>
+                            <input type='text' name='name' value={form.name} onChange={onChange}
+                                placeholder='Nome' required/><br/>
+                            <input type='email' name='email' value={form.email} onChange={onChange}
+                                placeholder='nome@email.com' required/><br/>
+                            <select name='payment' value={form.payment} onChange={onChange} required>
+                                <option defaultChecked>Pagamento</option>
+                                <option>Débito</option>
+                                <option>Crédito</option>
+                                <option>Pix</option>
+                                <option>Boleto</option>
+                            </select>
+                        <Contratar>Contratar</Contratar>
+                        <Paragrafo ref={resultado} style={{color:'whitesmoke'}}>Anote a identificação do serviço contratado:<br/>{jobId}</Paragrafo>
+                        </fieldset>
+                    </form>                
+                    <form onSubmit={consultarServico}>
+                        <fieldset>
+                            <legend>Consultar serviços contratados</legend>
+                            <input type='email' value={email} onChange={handleEmail}
+                            placeholder='Email do contratante' required/>
+                            <Contratar>Consultar</Contratar>
+                        </fieldset>
+                    </form>
+                </div>
+                <form style={{position:'relative', left:'50%', transform:'translateX(-17%)'}}
+                    onSubmit={servicoPorId}>
+                    <fieldset>
+                        <legend>Consultar serviço por identificador</legend>
+                        <input type='text' value={id} onChange={handleId}
+                            placeholder='Identificador'/>
+                            <Contratar>Consultar</Contratar>
+                    </fieldset>
+                </form>
+            </div>
+            <ConsultaEmail ref={consulta}>
+                <table border='1'>
+                    <tr>
+                        <td>Serviço</td>
+                        <td>Contratante</td>
+                        <td>Forma de pagamento</td>
+                        <td>Data de contratação</td>
+                    </tr>
+                    {servicos && servicos.map(servico=>{
+                        return(
+                            <tr key={servico.id}>
+                                <td>{servico.job}</td>
+                                <td>{servico.name}</td>
+                                <td>{servico.payment}</td>
+                                <td>{convertDate(servico.date)}</td>
+                            </tr>
+                        )
+                    })}
+                </table>
+            </ConsultaEmail>
             <DivBtn>
                 <Voltar onClick={()=> navigate('/lista')}>Voltar</Voltar>
             </DivBtn>

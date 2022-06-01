@@ -40,6 +40,7 @@ export const CartaoContainer = styled.div`
     margin-top: 30px;
 `
 export const Cartao = styled.div`
+    text-align: left;
     color: black;
     border: 1px solid;
     box-shadow: 2px 2px 4px #918bcb;    
@@ -56,6 +57,7 @@ export const Cartao = styled.div`
 export const Nome = styled.div`
     text-align: center;
     font-size: 14pt;
+    font-weight: bold;
 `
 export const BtnCartao = styled.button`
     border-radius: 20px;

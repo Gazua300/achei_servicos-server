@@ -1,22 +1,27 @@
 import styled from 'styled-components'
 
 
-export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+export const Container = styled.div`    
     color: black;
     margin-top: 10vh;
+
+    .form-container{
+        
+    }
+    .forms-consulta{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }    
     form{
-        margin-top: 5vh;
+        margin: 20px;
     }
     fieldset{
         width: 27vw;
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 2px 2px 4px whitesmoke;
+        box-shadow: 2px 2px 4px #918bcb;
         legend{
-            color: whitesmoke;
             text-align: center;
             font-size: 1.3rem;
         }
@@ -25,7 +30,6 @@ export const Container = styled.div`
         background: transparent;
         height: 20px;
         font-size: 1rem;
-        color: whitesmoke;
         border-radius: 10px;
         margin-bottom: 10px;
         padding-left: 10px;
@@ -36,6 +40,7 @@ export const Container = styled.div`
         height: 25px;
         font-size: 1rem;
         border-radius: 10px;
+        padding-left: 10px;
         color: gray;
         option{
             color: black;
@@ -50,8 +55,10 @@ export const Voltar = styled.button`
     color: whitesmoke; 
     cursor: pointer;
     font-size: 12pt;
+    margin-top: 10px;
 `
 export const DetalheCard = styled.div`
+    margin: auto;
     box-shadow: 2px 2px 4px #918bcb;
     border: 1px solid;
     width: 300px;
@@ -72,4 +79,18 @@ export const Contratar = styled.button`
     color: whitesmoke;
     cursor: pointer;
     padding: 5px;
+`
+export const Paragrafo = styled.p`
+    display: none;
+`
+export const ConsultaEmail = styled.div`
+    display: none;
+    table{
+        border: 1px solid whitesmoke;
+        color: whitesmoke;
+        margin: auto;
+    }
+    td{
+        padding: 5px;
+    }
 `
