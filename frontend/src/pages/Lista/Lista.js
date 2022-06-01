@@ -13,7 +13,7 @@ import {
 
 
 const Lista = ()=>{
-    const { states, requests } = useContext(Context)
+    const { states, setters, requests } = useContext(Context)
     const servicos = states.servicos
     const [minVal, setMinVal] = useState('')
     const [maxVal, setMaxVal] = useState('')
@@ -81,7 +81,7 @@ const Lista = ()=>{
                         <p><b>Preço: </b>R$ {servico.price}</p>
                         <b>Prazo: </b>{convertDate(servico.dueDate)}
                         <p><BtnCartao onClick={()=> requests.contratarServico(servico.id)}>Contratar</BtnCartao>&nbsp;&nbsp;
-                        <BtnCartao>Adicionar ao carrinho</BtnCartao></p>
+                        <BtnCartao onClick={()=> setters.adicionarAoCarrinho(servico)}>Adicionar ao carrinho</BtnCartao></p>
                     </Cartao>
                 )
             })}

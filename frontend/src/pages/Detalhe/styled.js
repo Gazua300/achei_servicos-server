@@ -30,6 +30,7 @@ export const Container = styled.div`
         background: transparent;
         height: 20px;
         font-size: 1rem;
+        color: whitesmoke;
         border-radius: 10px;
         margin-bottom: 10px;
         padding-left: 10px;
@@ -85,10 +86,29 @@ export const Paragrafo = styled.p`
 `
 export const ConsultaEmail = styled.div`
     display: none;
+    margin: 20px;
     table{
         border: 1px solid whitesmoke;
         color: whitesmoke;
         margin: auto;
+    }
+    th{
+        padding: 5px;
+    }
+    td{
+        padding: 5px;
+    }
+`
+export const ConstultaId = styled.div`
+    display: none;
+    margin: 20px;
+    table{
+        border: 1px solid whitesmoke;
+        color: whitesmoke;
+        margin: auto;
+    }
+    th{
+        padding: 5px;
     }
     td{
         padding: 5px;

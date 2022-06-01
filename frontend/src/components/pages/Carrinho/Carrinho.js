@@ -8,7 +8,7 @@ export default class Carrinho extends React.Component{
                 <b>{item.title}</b>
                 R$ {item.price.toFixed(2)}
                 <BtnContainer>
-                  <Remove onClick={()=> this.props.contratarServico(item)} >Contratar</Remove>
+                  <Remove onClick={()=> this.props.contratarServico(item)}>Contratar</Remove>
                   <Remove onClick={()=> this.props.removerDoCarrinho(item.id)} >Remover</Remove>
                 </BtnContainer>
             </QuadroCarro>

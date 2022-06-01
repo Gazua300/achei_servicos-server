@@ -15,6 +15,7 @@ export const Container = styled.div`
     	color: whitesmoke;
     	font-size: 1rem;
     	border-radius: 10px;
+        padding-left: 10px;
     }
     textarea{
         width: 24.5vw;
@@ -22,12 +23,14 @@ export const Container = styled.div`
         font-size: 1rem;
         color: whitesmoke;
         margin-top: 10px;
+        padding-left: 10px;
     }
     select{
         width: 24.5vw;
         background: transparent;
         font-size: 1rem;
         color: whitesmoke;
+        padding-left: 10px;
         option{
             color: black;
         }        

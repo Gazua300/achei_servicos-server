@@ -9,6 +9,7 @@ const Context = createContext()
 export const GlobalState = (props)=>{
     const navigate = useNavigate()
     const [servicos, setServicos] = useState([])
+    const [carrinho, setCarrinho] = useState([])
     const [servico, setServico] = useState({})
 
 
@@ -29,9 +30,34 @@ export const GlobalState = (props)=>{
         })
     }
 
+    const adicionarAoCarrinho = (adicionado)=>{
+        const novoCarro = [...carrinho, adicionado]
+        setCarrinho(novoCarro)
+        alert(`${adicionado.title} adicionado.`)
+    }
 
-    const states = { servicos, servico }
-    const setters = {}
+    const removerDoCarrinho = (id)=>{
+        const confirme = window.confirm('Tem certeza que deseja remover o serviço?')
+
+        if(confirme){
+            const novoCarro = carrinho.filter(item=>{
+                return item.id !== id
+            })
+            setCarrinho(novoCarro)
+        }
+    }
+
+    const limparCarrinho = ()=>{
+        const confirme = window.confirm('Tem certeza que deseja apagar todo o carrinho?')
+
+        if(confirme){
+            setCarrinho([])
+        }
+    }
+
+
+    const states = { servicos, servico, carrinho }
+    const setters = { adicionarAoCarrinho, removerDoCarrinho, limparCarrinho }
     const requests = { contratarServico }
 
     return(

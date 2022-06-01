@@ -41,7 +41,7 @@ const Cadastro = ()=>{
 
         }else{
             axios.post(`${BASE_URL}/jobs`, body).then(res=>{
-                console.log(res.data)
+                alert(res.data)
             }).catch(e=>{
                 alert(e.response.data)
             })

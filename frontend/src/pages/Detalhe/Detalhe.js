@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Context from '../../global/Context'
 import { BASE_URL } from '../../constants/urls'
-import { convertDate } from '../../utilidades/util'
 import { 
     Container,
     Voltar,
@@ -12,7 +11,8 @@ import {
     DivBtn,
     Contratar,
     Paragrafo,
-    ConsultaEmail
+    ConsultaEmail,
+    ConstultaId
  } from './styled'
 
 
@@ -22,12 +22,12 @@ const Detalhe = ()=>{
     const navigate = useNavigate()
     const resultado = useRef(null)
     const consulta = useRef(null)
+    const consultaPorId = useRef(null)
     const [jobId, setJobId] = useState('')
     const [id, setId] = useState('')
     const [email, setEmail] = useState('')
-    const [servicos, setServicos] = useState([])
-    console.log(servicos)
-    console.log(id)
+    const [servicos, setServicos] = useState([])  
+    const [servicoId, setServicoId] = useState({})  
     const [form, setForm] = useState({
         name:'',
         email:'',
@@ -90,12 +90,14 @@ const Detalhe = ()=>{
         e.preventDefault()
 
         axios.get(`${BASE_URL}/hired/${id}`).then(res=>{
-            console.log(res.data)
+            setServicoId(res.data)
+            consultaPorId.current.style.display = 'block'
         }).catch(e=>{
             alert(e.response.data)
         })
     }
-    
+    console.log(servicos)
+
 
     return(
         <Container>
@@ -103,7 +105,7 @@ const Detalhe = ()=>{
                 <Titulo>{servico.title}</Titulo>
                 <p><b>Descrição: </b>{servico.description}</p>
                 <b>Preço: </b>R$ {servico.price}.00
-                <p><b>Prazo: </b> {convertDate(servico.dueDate)}</p>
+                <p><b>Prazo: </b> {servico.dueDate}</p>
                 <b>Formas de pagamento: </b>{servico.payment}
             </DetalheCard>
             <div className='form-container'>
@@ -147,6 +149,7 @@ const Detalhe = ()=>{
             </div>
             <ConsultaEmail ref={consulta}>
                 <table border='1'>
+                <th>Consulta por email
                     <tr>
                         <td>Serviço</td>
                         <td>Contratante</td>
@@ -159,14 +162,35 @@ const Detalhe = ()=>{
                                 <td>{servico.job}</td>
                                 <td>{servico.name}</td>
                                 <td>{servico.payment}</td>
-                                <td>{convertDate(servico.date)}</td>
+                                <td>{servico.date}</td>
                             </tr>
                         )
                     })}
+                </th>
                 </table>
             </ConsultaEmail>
+            <ConstultaId ref={consultaPorId}>
+                <table border='1'>
+                <th>Constulta por id
+                    <tr>
+                        <td>Serviço</td>
+                        <td>Contratante</td>
+                        <td>Email</td>
+                        <td>Forma de pagamento</td>
+                        <td>Data de contratação</td>
+                    </tr>
+                    <tr>
+                        <td>{servicoId.job}</td>
+                        <td>{servicoId.name}</td>
+                        <td>{servicoId.email}</td>
+                        <td>{servicoId.payment}</td>
+                        <td>{servicoId.date}</td>
+                    </tr>
+                </th>
+                </table>
+            </ConstultaId>
             <DivBtn>
-                <Voltar onClick={()=> navigate('/lista')}>Voltar</Voltar>
+                <Voltar onClick={()=> navigate(-1)}>Voltar</Voltar>
             </DivBtn>
         </Container>
     )
