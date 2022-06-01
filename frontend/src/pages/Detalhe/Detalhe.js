@@ -89,7 +89,7 @@ const Detalhe = ()=>{
     const servicoPorId = (e)=>{
         e.preventDefault()
 
-        axios.get(`${BASE_URL}/job/${id}`).then(res=>{
+        axios.get(`${BASE_URL}/hired/${id}`).then(res=>{
             console.log(res.data)
         }).catch(e=>{
             alert(e.response.data)
