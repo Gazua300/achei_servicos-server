@@ -65,3 +65,23 @@ export const BtnCartao = styled.button`
     color: whitesmoke;
     cursor: pointer;
 `
+export const Carregando = styled.div`
+    margin: auto;
+    border: 2px solid #918bcb;
+    border-top: none;
+    width: 100px;
+    height: 100px;
+    box-shadow: 1px 1px 2px #918bcb;
+    border-radius: 50%;
+    animation: loading 0.8s infinite;
+
+    @keyframes loading {
+        from{
+            transform: rotate(0deg);
+        }
+        to{
+            transform: rotate(360deg);
+        }
+        
+    }
+`

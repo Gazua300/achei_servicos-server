@@ -8,7 +8,8 @@ import {
     BtnCartao,
     Nome,
     Container,
-    CartaoContainer
+    CartaoContainer,
+    Carregando
  } from "./styled"
 
 
@@ -74,7 +75,7 @@ const Lista = ()=>{
                 </select>
             </InputContainer>
             <CartaoContainer>
-            {filtro.map(servico=>{
+            {filtro.length > 0 ? filtro.map(servico=>{
                 return(
                     <Cartao key={servico.id}>
                         <Nome>{servico.title}</Nome>
@@ -84,7 +85,7 @@ const Lista = ()=>{
                         <BtnCartao onClick={()=> setters.adicionarAoCarrinho(servico)}>Adicionar ao carrinho</BtnCartao></p>
                     </Cartao>
                 )
-            })}
+            }) : <Carregando></Carregando>}
             </CartaoContainer>  
         </Container>        
     )

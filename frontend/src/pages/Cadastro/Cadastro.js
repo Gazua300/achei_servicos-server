@@ -14,7 +14,6 @@ const Cadastro = ()=>{
         preco:'',
         pagamento:'',
         prazo:''
-
     })
 
 
@@ -42,6 +41,13 @@ const Cadastro = ()=>{
         }else{
             axios.post(`${BASE_URL}/jobs`, body).then(res=>{
                 alert(res.data)
+                setForm({
+                    titulo:'',
+                    descricao:'',
+                    preco:'',
+                    pagamento:'',
+                    prazo:''
+                })
             }).catch(e=>{
                 alert(e.response.data)
             })

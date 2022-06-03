@@ -16,7 +16,9 @@
 		<img src="readmeImg/cadastro.png" width="400">
 		<img src="readmeImg/lista.png" width="400"><br>
 		A página onde estão listados os serviços também possui um filtro composto por 3 campos e um select. Onde é possível filtrar os serviços por preço e título, através dos campos e ordenar por prazo, preço e ordem afabética de título através do select. Em cada serviço há dois botões, um para levar à página de contratação do serviço e outro para adicionar o serviço ao carrinho.</li>
-	</ul>
+		<li>Página de detalhes, contratação e consulta de serviços:
+		</li>
+	</ul>	
 </body>
 </html>
 

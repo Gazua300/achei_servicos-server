@@ -2,7 +2,7 @@ import { BrowserRouter, Link } from "react-router-dom"
 import { createGlobalStyle } from "styled-components"
 import { GlobalState } from "./global/Context"
 import Router from "./routes/Router"
-import Background from './components/img/ninjaWallpaper.jpg'
+import Background from './img/ninjaWallpaper.jpg'
 import styled from 'styled-components'
 
 
@@ -37,48 +37,7 @@ const BtnHead = styled.button`
 
 
 const App = ()=> {
-  
-  // irParaDetalhe = (idServico)=>{
-  //     this.setState({telaAtual: 'detalhe', servicoDetalheId: idServico})
-  // }
 
-  // adicionarNoCarrinho = (servicoAdicionado)=>{
-  //     const novoCarro = [...this.state.carrinho, servicoAdicionado]
-  //     this.setState({carrinho: novoCarro})
-  //     alert(`O serviço ${servicoAdicionado.title} foi adicionado ao carrinho.`)
-  // }
-
-  // removerDoCarrinho = (id)=>{
-  //     const confirme = window.confirm('Tem certeza que deseja remover o seriço?')
-  //     if(confirme){
-  //         const novoCarro = this.state.carrinho.filter((carroItem)=>{
-  //             return carroItem.id !== id
-  //         })
-  //         this.setState({carrinho: novoCarro})
-  //     }
-  // }
-
-  // limparCarrinho = ()=>{
-  //     const confirme = window.confirm('Isso irá apagar todos os itens. Desjea continuar?')
-  //     if(confirme){
-  //         this.setState({carrinho: []})
-  //     }
-  // }
-
-  // contratarServico = (job)=>{
-  //   const token = localStorage.getItem('token')
-  //   const body = {
-  //     title: job.title,
-  //     price: job.price
-  //   }
-  //   axios.post(`${BASE_URL}/jobs/${token}`, body).then(res=>{
-  //     alert(res.data)
-  //   }).catch(err=>{
-  //     alert(err.response.data)
-  //   })
-  // }
-  
-  // }
     return (
       <BrowserRouter>
         <GlobalState>
