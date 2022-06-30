@@ -1,6 +1,6 @@
 # Labeninja
 
-Aplicaçõa backendo para o projeto marketplace de contratação e cadastramento de serviços diversos.
+Aplicação backend para o projeto marketplace de contratação e cadastramento de serviços diversos.
 
 
 
