@@ -7,12 +7,12 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const { title, description, price, initialDate, payment } = req.body
-    const array = initialDate.split('/')
-    const dueDate = `${array[2]}-${array[1]}-${array[0]}`
-      
+    const { title, description, price, dueDate, payment } = req.body
+    const array = dueDate.split('/')
+    const convert = `${array[2]}-${array[1]}-${array[0]}`
 
-    if(!title || !description || !price || !initialDate || !payment){
+
+    if(!title || !description || !price || !dueDate || !payment){
       statusCode = 401
       throw new Error('Preencha os campos')
     }
@@ -22,7 +22,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       throw new Error('Em preço deve ser usado somente números!')
     }
 
-    if(new Date(initialDate) < new Date()){
+    if(new Date(dueDate) < new Date()){
       statusCode = 403
       throw new Error('A data de realização do serviço deve ser superior a data atual')
     }
@@ -35,7 +35,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       title,
       description,
       price,
-      dueDate,
+      dueDate: convert,
       payment
     })
 

@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./build/index.js",
-    "dev": "tsnd --transpile-only --ignore-watch node_modules ./src/index.ts"
+    "start": "tsc && node ./build/index.js"
   },
   "repository": {
     "type": "git",
