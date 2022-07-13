@@ -7,24 +7,17 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const { title, description, price, dueDate, payment } = req.body
-    const array = dueDate.split('/')
-    const convert = `${array[2]}-${array[1]}-${array[0]}`
+    const { title, description, phone, period } = req.body
 
 
-    if(!title || !description || !price || !dueDate || !payment){
+    if(!title || !description || !phone || !period){
       statusCode = 401
       throw new Error('Preencha os campos')
     }
 
-    if(isNaN(price)){
+    if(isNaN(phone)){
       statusCode = 403
-      throw new Error('Em preço deve ser usado somente números!')
-    }
-
-    if(new Date(dueDate) < new Date()){
-      statusCode = 403
-      throw new Error('A data de realização do serviço deve ser superior a data atual')
+      throw new Error('O telefone deve ser somente números!')
     }
 
 
@@ -34,9 +27,8 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       id,
       title,
       description,
-      price,
-      dueDate: convert,
-      payment
+      phone,
+      period
     })
 
     res.status(200).send(`${title} registrado com sucesso.`)

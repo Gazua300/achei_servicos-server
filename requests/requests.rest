@@ -1,3 +1,33 @@
+POST http://localhost:3003/signin
+Content-Type: application/json
+
+{
+  "name": "Flamarion",
+  "email": "mesmo245@gmail.com",
+  "password": "senha"
+}
+
+
+###
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+  "email": "mesmo245@gmail.com",
+  "password": "senha"
+}
+
+
+###
+PUT http://localhost:3003/user/c9151b19-c053-4867-b3f4-447635bdad28
+Content-Type: application/json
+
+{
+  "name": "Flamarion",
+  "email": "mesmo245@gmail.com"
+}
+
+###
 GET http://localhost:3003/jobs
 
 ###
@@ -5,21 +35,19 @@ POST http://localhost:3003/jobs
 Content-Type: application/json
 
 {
-  "title": "Aulas de inglês",
-  "description": "Aulas de inglês à domicílio",
-  "price": 150,
-  "dueDate": "10/02/2022",
-  "payment": "débito e crédito"
+  "title": "Web designer",
+  "description": "desenvolvimento frontend",
+  "phone": 71984707037,
+  "period": "de seguna a sabado das 9:00 as 21:00"
 }
 
 ###
-POST http://localhost:3003/job
+POST http://localhost:3003/job/25c8f4aa-a6f5-4b38-b8ed-961e8f20849a
 Content-Type: application/json
 
 {
-  "name": "100",
-  "email": "outro@gmail.com",
-  "payment": "débido, crédito, pix"
+  "name": "Gazua",
+  "phone": 71988500067
 }
 
 ###
