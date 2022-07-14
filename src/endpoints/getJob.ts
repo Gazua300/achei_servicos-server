@@ -7,7 +7,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const { name, phone, user } = req.body
+    const { name, phone, provider, client } = req.body
     const [job] = await con('labeninja').where({
       id: req.params.id
     })
@@ -44,7 +44,8 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       phone,
       job: job.title,
       date: new Date().toLocaleDateString(),
-      provider: user
+      client,
+      provider
     })
 
     res.status(200).send(`${job.title} contratado com sucesso`)
