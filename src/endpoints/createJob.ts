@@ -15,6 +15,13 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       throw new Error('Preencha os campos')
     }
 
+    const convert = String(phone).split('')
+
+    if(convert.length !== 11){
+      statusCode = 403
+      throw new Error('Número de telefone inválido')
+    }
+
     if(isNaN(phone)){
       statusCode = 403
       throw new Error('O telefone deve ser somente números!')

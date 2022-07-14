@@ -28,6 +28,8 @@ export const updateUser =async(req:Request, res:Response):Promise<void> => {
         await con('labeninja_login').update({
             name,
             email
+        }).where({
+            id: req.params.id
         })
 
 

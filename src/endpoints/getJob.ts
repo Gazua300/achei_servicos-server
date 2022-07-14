@@ -7,7 +7,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const { name, phone } = req.body
+    const { name, phone, user } = req.body
     const [job] = await con('labeninja').where({
       id: req.params.id
     })
@@ -17,6 +17,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       throw new Error('Serviço não encontrado')
     }
 
+    
     if(!name || !phone){
       statusCode = 403
       throw new Error('Preencha os campos.')
@@ -27,6 +28,13 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       throw new Error('O telefone deve ser somente números!')
     }
 
+    const convert = String(phone).split('')
+
+    if(convert.length !== 11){
+      statusCode = 403
+      throw new Error('O telefone deve ser somento números')
+    }
+
 
     const id = new Authentication().generateId()
 
@@ -35,7 +43,8 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       name,
       phone,
       job: job.title,
-      date: new Date().toLocaleDateString()
+      date: new Date().toLocaleDateString(),
+      provider: user
     })
 
     res.status(200).send(`${job.title} contratado com sucesso`)

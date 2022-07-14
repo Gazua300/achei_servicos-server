@@ -2,8 +2,8 @@ POST http://localhost:3003/signin
 Content-Type: application/json
 
 {
-  "name": "Flamarion",
-  "email": "mesmo245@gmail.com",
+  "name": "Vanires",
+  "email": "nena_festa@gmail.com",
   "password": "senha"
 }
 
@@ -19,12 +19,12 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:3003/user/c9151b19-c053-4867-b3f4-447635bdad28
+PUT http://localhost:3003/user/8c631ff4-856e-47f8-8617-3d375998a887
 Content-Type: application/json
 
 {
-  "name": "Flamarion",
-  "email": "mesmo245@gmail.com"
+  "name": "Vanires",
+  "email": "nena_festa@gmail.com"
 }
 
 ###
@@ -47,7 +47,8 @@ Content-Type: application/json
 
 {
   "name": "Gazua",
-  "phone": 71988500067
+  "phone": 71988500067,
+  "user": 
 }
 
 ###
