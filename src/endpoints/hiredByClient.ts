@@ -2,12 +2,12 @@ import { Request, Response } from 'express'
 import { con } from '../connection/connection'
 
 
-export const hiredById = async(req:Request, res:Response):Promise<void>=>{
+export const hiredByClient = async(req:Request, res:Response):Promise<void>=>{
     var statusCode = 400
     try{
 
-        const [job] = await con('labeninja_contratado').where({
-            id: req.params.id
+        const job = await con('labeninja_contratado').where({
+            client: req.params.id
         })
 
         if(!job){
