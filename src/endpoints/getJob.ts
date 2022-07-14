@@ -34,7 +34,8 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       id,
       name,
       phone,
-      job: job.title
+      job: job.title,
+      date: new Date().toLocaleDateString()
     })
 
     res.status(200).send(`${job.title} contratado com sucesso`)
