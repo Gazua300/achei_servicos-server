@@ -16,6 +16,13 @@ export const login =async(req:Request, res:Response):Promise<void> => {
         }
 
 
+        const convert = String(phone).split('')
+        if(convert.length !== 11){
+            statusCode = 403
+            throw new Error('Número de telefone inválido!')
+        }
+
+
         const [user] = await con('labeninja_login').where({
             phone
         })
