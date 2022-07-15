@@ -8,10 +8,10 @@ export const createUser =async(req:Request, res:Response):Promise<void> => {
     var statusCode = 400
     try{
 
-        const { name, email, password } = req.body
+        const { name, phone, password } = req.body
         const id = new Authentication().generateId()
 
-        if(!name || !email || !password){
+        if(!name || !phone || !password){
             statusCode = 401
             throw new Error('Preencha os campos')
         }
@@ -19,7 +19,7 @@ export const createUser =async(req:Request, res:Response):Promise<void> => {
 
         const hash = new Authentication().hash(password)
         const [user] = await con('labeninja_login').where({
-            email
+            phone
         })
 
         if(user){
@@ -31,7 +31,7 @@ export const createUser =async(req:Request, res:Response):Promise<void> => {
         await con('labeninja_login').insert({
             id,
             name,
-            email,
+            phone,
             password: hash
         })
 

@@ -8,16 +8,16 @@ export const login =async(req:Request, res:Response):Promise<void> => {
     var statusCode = 400
     try{
 
-        const { email, password } = req.body
+        const { phone, password } = req.body
 
-        if(!email || !password){
+        if(!phone || !password){
             statusCode = 401
             throw new Error('Preencha os campos')
         }
 
 
         const [user] = await con('labeninja_login').where({
-            email
+            phone
         })
         
         if(!user){
