@@ -3,7 +3,7 @@ import cors from 'cors'
 import { getAllJobs } from './endpoints/getAllJobs'
 import { createJob } from   './endpoints/createJob'
 import { getJob } from './endpoints/getJob'
-import { getJobByEmail } from './endpoints/getJobByEmail'
+import { getUserById } from './endpoints/getUserById'
 import { getJobById } from './endpoints/getJobById'
 import { hiredByClient} from './endpoints/hiredByClient'
 import { hiredByProvider } from './endpoints/hiredByProvider'
@@ -22,12 +22,12 @@ app.get('/jobs', getAllJobs)
 app.get('/job/:id', getJobById)
 app.get('/hired/:id', hiredByClient)
 app.get('/provider/:id', hiredByProvider)
+app.get('/user/:id', getUserById)
 app.post('/signin', createUser)
 app.post('/login', login)
 app.put('/user/:id', updateUser)
 app.post('/jobs', createJob)
 app.post('/job/:id', getJob)
-app.post('/hired', getJobByEmail)
 
 
 
