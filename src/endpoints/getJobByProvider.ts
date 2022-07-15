@@ -4,10 +4,12 @@ import { con } from '../connection/connection'
 
 
 
-export const getAllJobs = async(req:Request, res:Response):Promise<void>=>{
+export const getJobByProvider = async(req:Request, res:Response):Promise<void>=>{
   try{
 
-    const jobs = await con('labeninja')
+    const jobs = await con('labeninja').where({
+        provider: req.params.id
+    })
     
 
     res.status(200).send(jobs)

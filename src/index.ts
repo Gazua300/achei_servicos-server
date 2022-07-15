@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { getAllJobs } from './endpoints/getAllJobs'
+import { getJobByProvider } from './endpoints/getJobByProvider'
 import { createJob } from   './endpoints/createJob'
 import { getJob } from './endpoints/getJob'
 import { getUserById } from './endpoints/getUserById'
@@ -19,6 +20,7 @@ app.use(cors())
 
 
 app.get('/jobs', getAllJobs)
+app.get('/provider/jobs', getJobByProvider)
 app.get('/job/:id', getJobById)
 app.get('/hired/:id', hiredByClient)
 app.get('/provider/:id', hiredByProvider)
