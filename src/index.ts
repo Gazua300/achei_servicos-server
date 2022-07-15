@@ -20,7 +20,7 @@ app.use(cors())
 
 
 app.get('/jobs', getAllJobs)
-app.get('/provider/jobs', getJobByProvider)
+app.get('/provider/jobs/:id', getJobByProvider)
 app.get('/job/:id', getJobById)
 app.get('/hired/:id', hiredByClient)
 app.get('/provider/:id', hiredByProvider)
