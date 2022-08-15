@@ -39,7 +39,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
 
     if(client === job.provider){
       statusCode = 401
-      throw new Error('Você está contratando um serviço que você mesmo cadastrou. Deseja prosseguir?')
+      throw new Error('Você está contratando um serviço que você mesmo cadastrou!')
     }
 
 
