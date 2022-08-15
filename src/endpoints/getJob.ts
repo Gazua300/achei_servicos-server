@@ -7,10 +7,11 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const { name, phone, provider, client } = req.body
+    const { name, phone, client } = req.body
     const [job] = await con('labeninja').where({
       id: req.params.id
     })
+
 
     if(!job){
       statusCode = 404
@@ -18,7 +19,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
     }
 
     
-    if(!name || !phone){
+    if(!name || !phone || !client){
       statusCode = 403
       throw new Error('Preencha os campos.')
     }
@@ -36,6 +37,12 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
     }
 
 
+    if(client === job.provider){
+      statusCode = 401
+      throw new Error('Você está contratando um serviço que você mesmo cadastrou. Deseja prosseguir?')
+    }
+
+
     const id = new Authentication().generateId()
 
     await con('labeninja_contratado').insert({
@@ -45,7 +52,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       job: job.title,
       date: new Date().toLocaleDateString(),
       client,
-      provider
+      provider: job.id 
     })
 
     res.status(200).send(`${job.title} contratado com sucesso`)
