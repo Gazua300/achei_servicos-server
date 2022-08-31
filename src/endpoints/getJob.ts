@@ -52,7 +52,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       job: job.title,
       date: new Date().toLocaleDateString(),
       client,
-      provider: job.id 
+      provider: job.provider 
     })
 
     res.status(200).send(`${job.title} contratado com sucesso`)
