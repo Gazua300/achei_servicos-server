@@ -4,7 +4,7 @@ Content-Type: application/json
 {
   "name": "Vanires",
   "phone": 71988500067,
-  "password": "senha"
+  "password": "senhaa"
 }
 
 
@@ -63,5 +63,9 @@ Content-Type: application/json
 {
     "email": "outr@gmail.com"
 }
+
+
+###
+DELETE http://localhost:3003/user/637c5c3f-73bc-480c-ade3-355c5aaa1a8d
 
 
