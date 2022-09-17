@@ -24,6 +24,12 @@ export const createUser =async(req:Request, res:Response):Promise<void> => {
         }
         
 
+        if(password.length < 6){
+            statusCode = 403
+            throw new Error('A senha deve ter um mínimo de 6 caracteres')
+        }
+
+        
         const hash = new Authentication().hash(password)
         const [user] = await con('labeninja_login').where({
             phone
