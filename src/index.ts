@@ -13,6 +13,7 @@ import { login } from './endpoints/login'
 import { updateUser } from './endpoints/updateUser'
 import { deleteUser } from './endpoints/deleteUser'
 import { deleteJob } from './endpoints/deleteJob'
+import { delHiredJob } from './endpoints/delHiredJob'
 
 
 
@@ -34,6 +35,7 @@ app.post('/job/:id', getJob)
 app.put('/user/:id', updateUser)
 app.delete('/user/:id', deleteUser)
 app.delete('/job/:id', deleteJob)
+app.delete('/hired/:id', delHiredJob)
 
 
 
