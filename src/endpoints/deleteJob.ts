@@ -7,8 +7,6 @@ export const deleteJob = async(req:Request, res:Response):Promise<void>=>{
     var statusCode = 400
     try{
 
-        const { user } = req.body
-
         const [job] = await con('labeninja').where({
             id: req.params.id
         })
@@ -19,9 +17,13 @@ export const deleteJob = async(req:Request, res:Response):Promise<void>=>{
         }
 
 
-        if(job.provider !== user){
+        const [provider] = await con('labeninja_contratado').where({
+            provider: job.provider
+        })
+
+        if(provider){
             statusCode = 403
-            throw new Error('Você só pode excluir um serviço que tenha sido criado por você!')
+            throw new Error('Você não pode excluir este serviço pois ele já sido contratado. Entre em contato com o cliente para cancelar o serviços e poder excluí-lo!')
         }
 
 
