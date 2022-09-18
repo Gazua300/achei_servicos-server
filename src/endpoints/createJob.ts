@@ -28,6 +28,23 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
     }
 
 
+    const [job] = await con('labeninja').where({
+      phone
+    })
+
+    
+
+    if(
+      title.includes(job.title) &&
+      description.includes(job.description) &&
+      period.includes(job.period) &&
+      provider.includes(job.provider)
+    ){
+      statusCode = 403
+      throw new Error('Serviço já cadastrado!')
+    }
+
+
     const id = new Authentication().generateId()
 
     await con('labeninja').insert({
@@ -38,6 +55,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       period,
       provider
     })
+    
 
     res.status(200).send(`${title} registrado com sucesso.`)
   }catch(error:any){

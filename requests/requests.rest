@@ -41,10 +41,10 @@ POST http://localhost:3003/jobs
 Content-Type: application/json
 
 {
-  "title": "Web designer",
-  "description": "desenvolvimento frontend",
+  "title": "Desenvolvedor web",
+  "description": "Criaçao de aplicaçoes web para serviços diversos",
   "phone": 71984707037,
-  "period": "de seguna a sabado das 9:00 as 21:00",
+  "period": "De seguna a sabado no horario comercial",
   "provider": "5797850d-aeb2-48be-b5e1-4fd6e32b4f31"
 }
 
