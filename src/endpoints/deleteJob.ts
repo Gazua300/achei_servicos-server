@@ -23,7 +23,7 @@ export const deleteJob = async(req:Request, res:Response):Promise<void>=>{
 
         if(provider){
             statusCode = 403
-            throw new Error('Você não pode excluir este serviço pois ele já sido contratado. Entre em contato com o cliente para cancelar o serviços e poder excluí-lo!')
+            throw new Error('Você não pode excluir este serviço pois ele já foi contratado. Entre em contato com o cliente para cancelá-lo se quiser excluí-lo!')
         }
 
 
