@@ -7,7 +7,7 @@ export const hiredByClient = async(req:Request, res:Response):Promise<void>=>{
     try{
 
         const job = await con('labeninja_contratado').where({
-            client: req.params.id
+            id: req.params.id
         })
 
         if(!job){
