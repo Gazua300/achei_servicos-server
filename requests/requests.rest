@@ -13,8 +13,8 @@ POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-  "email": "mesmo245@gmail.com",
-  "password": "senha"
+  "phone": 71988500067,
+  "password": "senhaa"
 }
 
 
@@ -44,7 +44,8 @@ Content-Type: application/json
   "title": "Web designer",
   "description": "desenvolvimento frontend",
   "phone": 71984707037,
-  "period": "de seguna a sabado das 9:00 as 21:00"
+  "period": "de seguna a sabado das 9:00 as 21:00",
+  "provider": "5797850d-aeb2-48be-b5e1-4fd6e32b4f31"
 }
 
 ###
