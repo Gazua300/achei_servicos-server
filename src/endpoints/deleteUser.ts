@@ -17,6 +17,16 @@ export const deleteUser = async(req:Request, res:Response):Promise<void>=>{
         }
 
 
+        const [provider] = await con('labeninja').where({
+            provider: req.params.id
+        })
+
+        if(provider){
+            statusCode = 403
+            throw new Error('Você não pode deletar sua conta, pois existem serviços à serem gerenciados!')
+        }
+
+
         await con('labeninja_login').where({
             id: req.params.id
         }).del()

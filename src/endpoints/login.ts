@@ -22,6 +22,11 @@ export const login =async(req:Request, res:Response):Promise<void> => {
             throw new Error('Número de telefone inválido!')
         }
 
+        if(password.length < 6){
+            statusCode = 403
+            throw new Error('A senha deve ter um mínimo de 6 caracteres')
+        }
+
 
         const [user] = await con('labeninja_login').where({
             phone
