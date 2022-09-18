@@ -27,9 +27,9 @@ export const deleteJob = async(req:Request, res:Response):Promise<void>=>{
         }
 
 
-        await con('labeninja').where({
-            id: req.params.id
-        }).del()
+        // await con('labeninja').where({
+        //     id: req.params.id
+        // }).del()
 
         
         res.status(200).send(`${job.tittle} excluído com sucesso!`)

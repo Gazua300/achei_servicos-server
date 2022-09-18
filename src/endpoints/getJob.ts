@@ -51,8 +51,8 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       phone,
       job: job.title,
       date: new Date().toLocaleDateString(),
-      client,
-      provider: job.provider 
+      provider: job.provider, 
+      job_id: job.id
     })
 
     res.status(200).send(`${job.title} contratado com sucesso`)
