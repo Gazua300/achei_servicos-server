@@ -32,17 +32,17 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       phone
     })
 
-    
-
-    if(
-      title.includes(job.title) &&
-      description.includes(job.description) &&
-      period.includes(job.period) &&
-      provider.includes(job.provider)
-    ){
-      statusCode = 403
-      throw new Error('Serviço já cadastrado!')
-    }
+    if(job){
+      if(
+        title.includes(job.title) &&
+        description.includes(job.description) &&
+        period.includes(job.period) &&
+        provider.includes(job.provider)
+      ){
+        statusCode = 403
+        throw new Error('Serviço já cadastrado!')
+      }
+    }   
 
 
     const id = new Authentication().generateId()

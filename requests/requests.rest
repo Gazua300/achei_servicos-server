@@ -49,12 +49,13 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3003/job/4c1e128f-567d-404b-8d42-cae04cf57a82
+POST http://localhost:3003/job/d8b04946-3add-4857-8d63-67d3da39773f
 Content-Type: application/json
 
 {
-  "name": "Gazua",
-  "phone": 71988500067,
+  "name": "Eu",
+  "phone": 71984707037,
+  "client": "93c1b96e-fd3d-4d34-bf6a-0c0c19f52d34"
 }
 
 ###
