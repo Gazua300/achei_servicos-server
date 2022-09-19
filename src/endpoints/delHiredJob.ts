@@ -10,16 +10,17 @@ export const delHiredJob = async(req:Request, res:Response):Promise<void>=>{
         const [job] = await con('labeninja_contratado').where({
             id: req.params.id
         })
-console.log(job)
+
+        
         if(!job){
             statusCode = 404
             throw new Error('Serviço não encontrado!')
         }
 
         
-        // await con('labeninja_contratado').where({
-        //     id: req.params.id
-        // }).del()
+        await con('labeninja_contratado').where({
+            id: req.params.id
+        }).del()
 
         
         res.status(200).send(`${job.job} excluído com sucesso!`)
