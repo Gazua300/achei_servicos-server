@@ -42,26 +42,7 @@ export const getJob = async(req:Request, res:Response):Promise<void>=>{
       throw new Error('Você está contratando um serviço que você mesmo cadastrou!')
     }
 
-
-    const [hired] = await con('labeninja_contratado').where({
-      phone
-    })
-
-
-    if(hired){
-      if(
-        name.includes(hired.name) &&
-        client.includes(hired.client) &&
-        job.title.includes(hired.job) &&
-        job.provider.includes(hired.provider) &&
-        job.id.includes(hired.job_id)
-      ){
-        statusCode = 403
-        throw new Error('Serviço já contratado!')
-      }
-    }    
-
-
+    
     const id = new Authentication().generateId()
 
     await con('labeninja_contratado').insert({
