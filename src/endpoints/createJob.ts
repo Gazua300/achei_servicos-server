@@ -7,7 +7,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
   let statusCode = 400
   try{
 
-    const { title, description, phone, period, provider } = req.body
+    const { title, description, phone, period } = req.body
 
 
     if(!title || !description || !phone || !period){
@@ -35,8 +35,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       title,
       description,
       phone,
-      period,
-      provider
+      period
     })
     
 
