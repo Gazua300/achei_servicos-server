@@ -11,10 +11,12 @@ import { hiredByProvider } from './endpoints/hiredByProvider'
 import { createUser } from './endpoints/createUser'
 import { login } from './endpoints/login'
 import { updateUser } from './endpoints/updateUser'
-import { addEmail_temp } from './endpoints/addEmail_temp'
 import { deleteUser } from './endpoints/deleteUser'
 import { deleteJob } from './endpoints/deleteJob'
 import { delHiredJob } from './endpoints/delHiredJob'
+
+import { updateLogin_temp } from './endpoints/updateLogin_temp'
+import { addEmail_temp } from './endpoints/addEmail_temp'
 
 
 
@@ -34,10 +36,12 @@ app.post('/login', login)
 app.post('/jobs', createJob)
 app.post('/job/:id', getJob)
 app.put('/user/:id', updateUser)
-app.put('/email/:id', addEmail_temp)
 app.delete('/user/:id', deleteUser)
 app.delete('/job/:id', deleteJob)
 app.delete('/hired/:id', delHiredJob)
+
+app.post('/login_temp', updateLogin_temp)
+app.put('/email/:id', addEmail_temp)
 
 
 
