@@ -8,10 +8,10 @@ export const createUser =async(req:Request, res:Response):Promise<void> => {
     var statusCode = 400
     try{
 
-        const { name, phone, email } = req.body
+        const { name, phone } = req.body
         const id = new Authentication().generateId()
 
-        if(!name || !phone || !email){
+        if(!name || !phone){
             statusCode = 401
             throw new Error('Preencha os campos')
         }
@@ -37,8 +37,7 @@ export const createUser =async(req:Request, res:Response):Promise<void> => {
         await con('labeninja_login').insert({
             id,
             name,
-            phone,
-            email
+            phone
         })
 
 
