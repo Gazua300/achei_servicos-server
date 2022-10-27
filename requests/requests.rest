@@ -69,3 +69,12 @@ DELETE http://localhost:3003/user/637c5c3f-73bc-480c-ade3-355c5aaa1a8d
 DELETE http://localhost:3003/job/08c38b05-f2c9-41e9-8e76-a4e7f0c223f8
 
 
+###
+PUT http://localhost:3003/email/fbb22909-071b-480f-bdd2-bc2cc80660ec
+Content-Type: application/json
+
+{
+  "email": "mesmo245@gmail.com"
+}
+
+

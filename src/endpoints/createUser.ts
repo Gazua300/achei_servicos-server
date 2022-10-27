@@ -8,10 +8,10 @@ export const createUser =async(req:Request, res:Response):Promise<void> => {
     var statusCode = 400
     try{
 
-        const { name, phone, password } = req.body
+        const { name, phone, email } = req.body
         const id = new Authentication().generateId()
 
-        if(!name || !phone || !password){
+        if(!name || !phone || !email){
             statusCode = 401
             throw new Error('Preencha os campos')
         }
@@ -24,13 +24,6 @@ export const createUser =async(req:Request, res:Response):Promise<void> => {
         }
         
 
-        if(password.length < 6){
-            statusCode = 403
-            throw new Error('A senha deve ter um mínimo de 6 caracteres')
-        }
-
-        
-        const hash = new Authentication().hash(password)
         const [user] = await con('labeninja_login').where({
             phone
         })
@@ -45,7 +38,7 @@ export const createUser =async(req:Request, res:Response):Promise<void> => {
             id,
             name,
             phone,
-            password: hash
+            email
         })
 
 
