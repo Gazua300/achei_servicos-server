@@ -7,9 +7,9 @@ export const updateUser =async(req:Request, res:Response):Promise<void> => {
     var statusCode = 400
     try{
 
-        const { name, phone } = req.body
+        const { name, phone, email } = req.body
 
-        if(!name || !phone){
+        if(!name || !phone || !email){
             statusCode = 401
             throw new Error('Preencha os campos')
         }
@@ -34,7 +34,8 @@ export const updateUser =async(req:Request, res:Response):Promise<void> => {
 
         await con('labeninja_login').update({
             name,
-            phone
+            phone,
+            email
         }).where({
             id: req.params.id
         })
