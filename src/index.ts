@@ -15,9 +15,6 @@ import { deleteUser } from './endpoints/deleteUser'
 import { deleteJob } from './endpoints/deleteJob'
 import { delHiredJob } from './endpoints/delHiredJob'
 
-import { updateLogin_temp } from './endpoints/updateLogin_temp'
-import { addEmail_temp } from './endpoints/addEmail_temp'
-
 
 
 const app = express()
@@ -39,9 +36,6 @@ app.put('/user/:id', updateUser)
 app.delete('/user/:id', deleteUser)
 app.delete('/job/:id', deleteJob)
 app.delete('/hired/:id', delHiredJob)
-
-app.post('/login_temp', updateLogin_temp)
-app.put('/email/:id', addEmail_temp)
 
 
 
