@@ -10,13 +10,13 @@ export const insertImnages = async(req:Request, res:Response):Promise<void>=>{
     const destination = req.file?.destination
     const name = req.file?.filename
     
-    const [user] = await con('labeninja_login').where({
+    const [job] = await con('labeninja').where({
         id: req.params.id
     })
 
-    if(!user){
+    if(!job){
         statusCode = 404
-        throw new Error('Usuário não encontrado')
+        throw new Error('Serviço não encontrado')
     }
 
     
@@ -26,7 +26,7 @@ export const insertImnages = async(req:Request, res:Response):Promise<void>=>{
       id,
       name,
       destination,
-      provider: user.id
+      provider: job.id
     })
     
 
