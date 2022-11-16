@@ -25,7 +25,7 @@ export const insertImnages = async(req:Request, res:Response):Promise<void>=>{
     await con('labeninja_images').insert({
       id,
       name,
-      destination: destination,
+      destination,
       provider: user.id
     })
     
