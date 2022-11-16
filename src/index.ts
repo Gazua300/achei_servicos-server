@@ -39,6 +39,8 @@ const upload = multer({
 })
 
 
+app.use('/photo', express.static('imgs'))
+
 app.get('/jobs', getAllJobs)
 app.get('/provider/jobs/:id', getJobByProvider)
 app.get('/job/:id', getJobById)
