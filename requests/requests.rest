@@ -37,6 +37,9 @@ GET http://localhost:3003/job/5ffd42db-5d15c-9410-f3346e36a87a
 GET http://localhost:3003/user/8c631ff4-856e-47f8-8617-3d375998a887
 
 ###
+GET http://localhost:3003/images/a4ea4b51-83ad-468e-90a7-8f0e6e490af3
+
+###
 POST http://localhost:3003/jobs
 Content-Type: application/json
 

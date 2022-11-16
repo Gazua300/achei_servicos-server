@@ -9,7 +9,6 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
 
     const { title, description, phone, period, provider } = req.body
 
-
     if(!title || !description || !phone || !period){
       statusCode = 401
       throw new Error('Preencha os campos')
