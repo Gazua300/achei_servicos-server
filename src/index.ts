@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request } from 'express'
 import cors from 'cors'
 import { getAllJobs } from './endpoints/getAllJobs'
 import { getJobByProvider } from './endpoints/getJobByProvider'
@@ -29,10 +29,10 @@ import path from 'node:path'
 
 const upload = multer({
   storage: multer.diskStorage({
-    destination(req, file, cb){
+    destination(req:Request, file:any, cb:any){
       cb(null, path.resolve(__dirname, '..', 'imgs'))
     },
-    filename(req, file, cb){
+    filename(req:Request, file:any, cb:any){
       cb(null, `${Date.now().toString(18)}-${file.originalname}`)
     }
   })
