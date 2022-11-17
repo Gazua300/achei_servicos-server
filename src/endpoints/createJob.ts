@@ -26,6 +26,22 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
       throw new Error('O telefone deve ser somente números!')
     }
 
+
+    const [job] = await con('labeninja').where({
+      phone
+    })
+
+    if(job){
+      if(
+        job.title === title &&
+        job.description === description &&
+        job.period === period
+      ){
+        statusCode = 401
+        throw new Error('Você está cadastrando o mesmo serviço novamente')
+      }
+    }
+
     
     const id = new Authentication().generateId()
 

@@ -47,8 +47,7 @@ Content-Type: application/json
   "title": "Desenvolvedor web",
   "description": "Criaçao de aplicaçoes web para serviços diversos",
   "phone": 71984707037,
-  "period": "De seguna a sabado no horario comercial",
-  "provider": "5797850d-aeb2-48be-b5e1-4fd6e32b4f31"
+  "period": "De seguna a sabado no horario comercial"
 }
 
 ###
