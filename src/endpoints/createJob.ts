@@ -38,7 +38,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
         job.period === period
       ){
         statusCode = 401
-        throw new Error('Você está cadastrando o mesmo serviço novamente')
+        throw new Error('Você está tentando cadastrar o mesmo serviço novamente')
       }
     }
 

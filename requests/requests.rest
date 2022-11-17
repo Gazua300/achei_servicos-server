@@ -44,7 +44,7 @@ POST http://localhost:3003/jobs
 Content-Type: application/json
 
 {
-  "title": "Desenvolvedor web",
+  "title": "Desenvolvedor eb",
   "description": "Criaçao de aplicaçoes web para serviços diversos",
   "phone": 71984707037,
   "period": "De seguna a sabado no horario comercial"
