@@ -27,7 +27,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
     }
 
 
-    const [job] = await con('labeninja').where({
+    const [job] = await con('labeninja_pub').where({
       phone
     })
 
@@ -45,7 +45,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
     
     const id = new Authentication().generateId()
 
-    await con('labeninja').insert({
+    await con('labeninja_pub').insert({
       id,
       title,
       description,
