@@ -17,18 +17,18 @@ export const deleteJob = async(req:Request, res:Response):Promise<void>=>{
         }
 
 
-        const [provider] = await con('labeninja_contratado').where({
-            provider: job.provider
-        })
+        // const [provider] = await con('labeninja_contratado').where({
+        //     provider: job.provider
+        // })
 
-        const [jobId] = await con('labeninja_contratado').where({
-            job_id: job.id
-        })
+        // const [jobId] = await con('labeninja_contratado').where({
+        //     job_id: job.id
+        // })
 
-        if(provider && jobId){
-            statusCode = 403
-            throw new Error('Você não pode excluir este serviço pois ele já foi contratado. Entre em contato com o cliente para cancelá-lo se quiser excluí-lo!')
-        }
+        // if(provider && jobId){
+        //     statusCode = 403
+        //     throw new Error('Você não pode excluir este serviço pois ele já foi contratado. Entre em contato com o cliente para cancelá-lo se quiser excluí-lo!')
+        // }
 
 
         await con('labeninja_pub').where({
