@@ -7,7 +7,7 @@ import { con } from '../connection/connection'
 export const getAllJobs = async(req:Request, res:Response):Promise<void>=>{
   try{
 
-    const jobs = await con('labeninja')
+    const jobs = await con('labeninja_pub')
     
 
     res.status(200).send(jobs)
