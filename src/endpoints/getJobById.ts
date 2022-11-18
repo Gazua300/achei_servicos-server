@@ -6,7 +6,7 @@ export const getJobById = async(req:Request, res:Response):Promise<void>=>{
     var statusCode = 400
     try{
 
-        const [job] = await con('labeninja').where({
+        const [job] = await con('labeninja_pub').where({
             id: req.params.id
         })
 
