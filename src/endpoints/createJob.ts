@@ -46,13 +46,13 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
     const id = new Authentication().generateId()
     const token = new Authentication().token(id)
 
-    // await con('labeninja_pub').insert({
-    //   id,
-    //   title,
-    //   description,
-    //   phone,
-    //   period
-    // })
+    await con('labeninja_pub').insert({
+      id,
+      title,
+      description,
+      phone,
+      period
+    })
     
 
     res.status(200).send({token, id})
