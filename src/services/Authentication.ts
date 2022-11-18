@@ -15,7 +15,7 @@ export class Authentication {
     return jwt.sign(
       { payload },
       process.env.JWT_KEY as string,
-      { expiresIn: '24h'}
+      { expiresIn: '1m'}
     )
   }
 

@@ -44,6 +44,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
 
     
     const id = new Authentication().generateId()
+    const token = new Authentication().token(id)
 
     await con('labeninja_pub').insert({
       id,
@@ -54,7 +55,7 @@ export const createJob = async(req:Request, res:Response):Promise<void>=>{
     })
     
 
-    res.status(200).send(`${title} registrado com sucesso.`)
+    res.status(200).send(token)
   }catch(error:any){
     res.status(statusCode).send(error.message || error.sqlMessage)
   }
