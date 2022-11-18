@@ -7,7 +7,7 @@ export const deleteJob = async(req:Request, res:Response):Promise<void>=>{
     var statusCode = 400
     try{
 
-        const [job] = await con('labeninja').where({
+        const [job] = await con('labeninja_pub').where({
             id: req.params.id
         })
 
@@ -31,7 +31,7 @@ export const deleteJob = async(req:Request, res:Response):Promise<void>=>{
         }
 
 
-        await con('labeninja').where({
+        await con('labeninja_pub').where({
             id: req.params.id
         }).del()
 
