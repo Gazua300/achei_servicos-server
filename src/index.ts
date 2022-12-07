@@ -1,4 +1,4 @@
-import express, { Request } from 'express'
+import express from 'express'
 import cors from 'cors'
 import { getAllJobs } from './endpoints/getAllJobs'
 import { getJobByProvider } from './endpoints/getJobByProvider'
@@ -23,22 +23,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-import multer from 'multer'
-import path from 'node:path'
-
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination(req:Request, file:any, cb:any){
-      cb(null, path.resolve(__dirname, '..', 'imgs'))
-    },
-    filename(req:Request, file:any, cb:any){
-      cb(null, `${Date.now().toString(18)}-${file.originalname}`)
-    }
-  })
-})
-
-
 app.use('/photo', express.static('imgs'))
 
 app.get('/jobs', getAllJobs)
@@ -52,7 +36,7 @@ app.post('/signup', createUser)
 app.post('/login', login)
 app.post('/jobs', createJob)
 app.post('/job/:id', getJob)
-app.post('/images/:id', upload.single('destination'), insertImnages)
+app.post('/images/:id', insertImnages)
 app.put('/user/:id', updateUser)
 app.delete('/user/:id', deleteUser)
 app.delete('/job/:id', deleteJob)
