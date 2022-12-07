@@ -11,6 +11,7 @@ import { hiredByProvider } from './endpoints/hiredByProvider'
 import { createUser } from './endpoints/createUser'
 import { login } from './endpoints/login'
 import { updateUser } from './endpoints/updateUser'
+import { updatePushToken } from './endpoints/updatePushToken'
 import { deleteUser } from './endpoints/deleteUser'
 import { deleteJob } from './endpoints/deleteJob'
 import { delHiredJob } from './endpoints/delHiredJob'
@@ -32,12 +33,16 @@ app.get('/hired/:id', hiredByClient)
 app.get('/provider/:id', hiredByProvider)
 app.get('/user/:id', getUserById)
 app.get('/images/:id', getImagesDestination)
+
 app.post('/signup', createUser)
 app.post('/login', login)
 app.post('/jobs', createJob)
 app.post('/job/:id', getJob)
 app.post('/images/:id', insertImnages)
+
 app.put('/user/:id', updateUser)
+app.put('/pushtoken/:id', updatePushToken)
+
 app.delete('/user/:id', deleteUser)
 app.delete('/job/:id', deleteJob)
 app.delete('/hired/:id', delHiredJob)
