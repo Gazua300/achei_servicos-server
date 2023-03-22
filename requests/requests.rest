@@ -37,7 +37,7 @@ GET http://localhost:3003/job/5ffd42db-5d15c-9410-f3346e36a87a
 GET http://localhost:3003/user/8c631ff4-856e-47f8-8617-3d375998a887
 
 ###
-GET http://localhost:3003/images/a4ea4b51-83ad-468e-90a7-8f0e6e490af3
+GET http://localhost:3003/image/4e53cdbd-0faf-4d0a-b61e-d7b72ddd516f
 
 ###
 POST http://localhost:3003/jobs
@@ -69,6 +69,9 @@ DELETE http://localhost:3003/user/637c5c3f-73bc-480c-ade3-355c5aaa1a8d
 
 ###
 DELETE http://localhost:3003/job/08c38b05-f2c9-41e9-8e76-a4e7f0c223f8
+
+###
+DELETE http://localhost:3003/image/0313e674-8000-4185-b798-23f9f5129967
 
 
 ###
