@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
       cb(null, './src/uploads')
   },
   filename: (req, file, cb)=>{
-      cb(null, `${new Date().getTime().toString(36)}_${file.originalname}`)
+      cb(null, file.originalname)
   }
 })
 
@@ -27,6 +27,7 @@ import { getJobById } from './endpoints/getJobById'
 import { displayJobImage } from './endpoints/displayJobImage'
 import { updatePushToken } from './endpoints/updatePushToken'
 import { deleteJob } from './endpoints/deleteJob'
+import { delImage } from './endpoints/delImage'
 
 
 app.get('/jobs', getAllJobs)
@@ -36,6 +37,7 @@ app.post('/jobs', createJob)
 app.post('/image/:id', upload.single('image'), uploadJobImage)
 app.put('/pushtoken/:id', updatePushToken)
 app.delete('/job/:id', deleteJob)
+app.delete('/image/:id', delImage)
 
 
 
