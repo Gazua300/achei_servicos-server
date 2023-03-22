@@ -24,14 +24,16 @@ import { getAllJobs } from './endpoints/getAllJobs'
 import { createJob } from   './endpoints/createJob'
 import { uploadJobImage } from './endpoints/uploadJobImage'
 import { getJobById } from './endpoints/getJobById'
+import { displayJobImage } from './endpoints/displayJobImage'
 import { updatePushToken } from './endpoints/updatePushToken'
 import { deleteJob } from './endpoints/deleteJob'
 
 
 app.get('/jobs', getAllJobs)
 app.get('/job/:id', getJobById)
+app.get('/image/:id', displayJobImage)
 app.post('/jobs', createJob)
-app.post('/image', upload.single('image'), uploadJobImage)
+app.post('/image/:id', upload.single('image'), uploadJobImage)
 app.put('/pushtoken/:id', updatePushToken)
 app.delete('/job/:id', deleteJob)
 
