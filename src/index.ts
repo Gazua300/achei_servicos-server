@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
 import cors from 'cors'
 import multer from 'multer'
 
@@ -22,12 +22,14 @@ const upload = multer({ storage: storage })
 
 import { getAllJobs } from './endpoints/getAllJobs'
 import { createJob } from   './endpoints/createJob'
-import { uploadJobImage } from './endpoints/uploadJobImage'
 import { getJobById } from './endpoints/getJobById'
-import { displayJobImage } from './endpoints/displayJobImage'
-import { updatePushToken } from './endpoints/updatePushToken'
 import { deleteJob } from './endpoints/deleteJob'
+
+import { uploadJobImage } from './endpoints/uploadJobImage'
+import { displayJobImage } from './endpoints/displayJobImage'
 import { delImage } from './endpoints/delImage'
+
+import { updatePushToken } from './endpoints/updatePushToken'
 
 
 app.get('/jobs', getAllJobs)
