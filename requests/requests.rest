@@ -1,93 +1,51 @@
-POST http://localhost:3003/signin
+POST http://localhost:3003/signup
 Content-Type: application/json
 
 {
   "name": "Vanires",
-  "phone": 71988500067,
-  "password": "senhaa"
+  "email": "eupublicomsm@gmail.com",
+  "password": "123456",
+  "verifyPass": "123456"
 }
-
 
 ###
 POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-  "phone": 71988500067,
-  "password": "senhaa"
-}
-
-
-###
-PUT http://localhost:3003/user/8c631ff4-856e-47f8-8617-3d375998a887
-Content-Type: application/json
-
-{
-  "name": "Vanires",
-  "email": "nena_festa@gmail.com"
+  "email": "eupublicomsm@gmail.com",
+  "password": "123456"
 }
 
 ###
 GET http://localhost:3003/jobs
+Authorization: eyJhbGciOiJIUzI1NiJ9.NTZiM2I3ZDYtZDE2ZC00Mzc5LTkwY2MtNTE1ODQ1MmE4MzY4.MqZgDCiXL-IabT_UtMuQouaFS8Lddj7IT-HJceLX-Uo
 
 ###
 GET http://localhost:3003/job/5ffd42db-5d15c-9410-f3346e36a87a
+Authorization: eyJhbGciOiJIUzI1NiJ9.NTZiM2I3ZDYtZDE2ZC00Mzc5LTkwY2MtNTE1ODQ1MmE4MzY4.MqZgDCiXL-IabT_UtMuQouaFS8Lddj7IT-HJceLX-Uo
 
 ###
-GET http://localhost:3003/user/8c631ff4-856e-47f8-8617-3d375998a887
+PATCH http://localhost:3003/user/pushtoken
+Authorization: eyJhbGciOiJIUzI1NiJ9.NTZiM2I3ZDYtZDE2ZC00Mzc5LTkwY2MtNTE1ODQ1MmE4MzY4.MqZgDCiXL-IabT_UtMuQouaFS8Lddj7IT-HJceLX-Uo
+Content-Type: application/json
 
-###
-GET http://localhost:3003/image/4e53cdbd-0faf-4d0a-b61e-d7b72ddd516f
+{
+  "push_token":"123"
+}
 
 ###
 POST http://localhost:3003/jobs
+Authorization: eyJhbGciOiJIUzI1NiJ9.MWVjOTUwMzktZDUzNC00MWY1LThjZDMtN2I3YWU1ZGVmNWMz.sdBSP9givC6SoAifeSG1dcnnt0dbRpNqlbR962lSz8I
 Content-Type: application/json
 
 {
-  "title": "Desenvolvedor eb",
-  "description": "Criaçao de aplicaçoes web para serviços diversos",
-  "phone": 71984707037,
-  "period": "De seguna a sabado no horario comercial"
+  "title": "Aulas de inglês",
+  "description": "Ministração de aulas de inglês particulares. Métodos e lições práticas baseados puramente na conversação sem a necessidade de materias didáticos",
+  "phone": 12345678911,
+  "period": "De seguna à sexta no horário comercial"
 }
 
 ###
-POST http://localhost:3003/job/d8b04946-3add-4857-8d63-67d3da39773f
-Content-Type: application/json
-
-{
-  "name": "Eu",
-  "phone": 71984707037,
-  "client": "93c1b96e-fd3d-4d34-bf6a-0c0c19f52d34"
-}
-
-###
-DELETE http://localhost:3003/hired/0daeb625-1abc-438d-8a18-094906c8d199
-
-###
-DELETE http://localhost:3003/user/637c5c3f-73bc-480c-ade3-355c5aaa1a8d
-
-
-###
-DELETE http://localhost:3003/job/08c38b05-f2c9-41e9-8e76-a4e7f0c223f8
-
-###
-DELETE http://localhost:3003/image/0313e674-8000-4185-b798-23f9f5129967
-
-
-###
-PUT http://localhost:3003/email/fbb22909-071b-480f-bdd2-bc2cc80660ec
-Content-Type: application/json
-
-{
-  "email": "mesmo245@gmail.com"
-}
-
-
-###
-POST http://localhost:3003/login_temp
-Content-Type: application/json
-
-{
-  "phone": "71984707037",
-  "password": "alfa245"
-}
+DELETE http://localhost:3003/job/497568ed-a406-4e21-953d-6ab7c31b4287
+Authorization: eyJhbGciOiJIUzI1NiJ9.NTZiM2I3ZDYtZDE2ZC00Mzc5LTkwY2MtNTE1ODQ1MmE4MzY4.MqZgDCiXL-IabT_UtMuQouaFS8Lddj7IT-HJceLX-Uo

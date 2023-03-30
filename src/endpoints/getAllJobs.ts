@@ -1,11 +1,14 @@
 import { Request, Response } from 'express'
 import { con } from '../connection/connection'
+import { auth } from '../services/auth'
 
 
 
 
 export const getAllJobs = async(req:Request, res:Response):Promise<void>=>{
   try{
+
+    await auth(req)
 
     const jobs = await con('labeninja_pub')
     

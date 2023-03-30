@@ -1,11 +1,14 @@
 import { Request, Response } from 'express'
 import { con } from '../connection/connection'
+import { auth } from '../services/auth'
 
 
 
 export const updatePushToken =async(req:Request, res:Response):Promise<void> => {
     var statusCode = 400
     try{
+
+        const userAuth = await auth(req)
 
         const { push_token } = req.body
 
@@ -14,21 +17,11 @@ export const updatePushToken =async(req:Request, res:Response):Promise<void> => 
             throw new Error('Push de notificação ausente')
         }
 
-        
-        const [user] = await con('labeninja_pub').where({
-            id: req.params.id
-        })
 
-        if(!user){
-            statusCode = 404
-            throw new Error('Serviço não encontrado')
-        }
-
-
-        await con('labeninja_pub').update({
+        await con('labeninja_users').update({
             push_token
         }).where({
-            id: req.params.id
+            id: userAuth.id
         })
 
 
