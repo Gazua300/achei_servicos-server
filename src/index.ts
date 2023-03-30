@@ -20,6 +20,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
+import { createUser } from './endpoints/createUser'
+import { login } from './endpoints/login'
 import { getAllJobs } from './endpoints/getAllJobs'
 import { createJob } from   './endpoints/createJob'
 import { getJobById } from './endpoints/getJobById'
@@ -32,12 +34,17 @@ import { delImage } from './endpoints/delImage'
 import { updatePushToken } from './endpoints/updatePushToken'
 
 
+app.post('/signup', createUser)
+app.post('/login', login)
+app.post('/jobs', createJob)
+app.post('/image/:id', upload.single('image'), uploadJobImage)
+
 app.get('/jobs', getAllJobs)
 app.get('/job/:id', getJobById)
 app.get('/image/:id', displayJobImage)
-app.post('/jobs', createJob)
-app.post('/image/:id', upload.single('image'), uploadJobImage)
-app.put('/pushtoken/:id', updatePushToken)
+
+app.patch('/user/pushtoken', updatePushToken)
+
 app.delete('/job/:id', deleteJob)
 app.delete('/image/:id', delImage)
 

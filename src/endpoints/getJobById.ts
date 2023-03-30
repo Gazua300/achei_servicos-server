@@ -1,10 +1,13 @@
 import { Request, Response } from 'express'
 import { con } from '../connection/connection'
+import { auth } from '../services/auth'
 
 
 export const getJobById = async(req:Request, res:Response):Promise<void>=>{
     var statusCode = 400
     try{
+
+        await auth(req)
 
         const [job] = await con('labeninja_pub').where({
             id: req.params.id

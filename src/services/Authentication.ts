@@ -13,9 +13,8 @@ export class Authentication {
 
   token = (payload:string)=>{
     return jwt.sign(
-      { payload },
-      process.env.JWT_KEY as string,
-      { expiresIn: '1m'}
+      payload,
+      process.env.JWT_KEY as string
     )
   }
 
