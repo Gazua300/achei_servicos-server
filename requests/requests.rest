@@ -1,4 +1,4 @@
-POST http://localhost:3003/signup
+POST https://achei-servicos-server.vercel.app/signup
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3003/login
+POST https://achei-servicos-server.vercel.app/login
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3003/jobs
+GET https://achei-servicos-server.vercel.app/jobs
 Authorization: eyJhbGciOiJIUzI1NiJ9.NTZiM2I3ZDYtZDE2ZC00Mzc5LTkwY2MtNTE1ODQ1MmE4MzY4.MqZgDCiXL-IabT_UtMuQouaFS8Lddj7IT-HJceLX-Uo
 
 ###
