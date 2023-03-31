@@ -22,13 +22,17 @@ const upload = multer({ storage: storage })
 
 import { createUser } from './endpoints/createUser'
 import { login } from './endpoints/login'
-import { getAllJobs } from './endpoints/getAllJobs'
 import { createJob } from   './endpoints/createJob'
-import { getJobById } from './endpoints/getJobById'
-import { deleteJob } from './endpoints/deleteJob'
-
 import { uploadJobImage } from './endpoints/uploadJobImage'
+
+import { getAllJobs } from './endpoints/getAllJobs'
+import { getJobsByUser } from './endpoints/getJobsByUser'
+import { getJobById } from './endpoints/getJobById'
+import { getUserById } from './endpoints/getUserById'
 import { displayJobImage } from './endpoints/displayJobImage'
+
+
+import { deleteJob } from './endpoints/deleteJob'
 import { delImage } from './endpoints/delImage'
 
 import { updatePushToken } from './endpoints/updatePushToken'
@@ -40,7 +44,9 @@ app.post('/jobs', createJob)
 app.post('/image/:id', upload.single('image'), uploadJobImage)
 
 app.get('/jobs', getAllJobs)
+app.get('/userjobs', getJobsByUser)
 app.get('/job/:id', getJobById)
+app.get('/user', getUserById)
 app.get('/image/:id', displayJobImage)
 
 app.patch('/user/pushtoken', updatePushToken)
