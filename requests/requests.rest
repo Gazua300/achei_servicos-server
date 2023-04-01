@@ -49,3 +49,6 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3003/job/497568ed-a406-4e21-953d-6ab7c31b4287
 Authorization: eyJhbGciOiJIUzI1NiJ9.NTZiM2I3ZDYtZDE2ZC00Mzc5LTkwY2MtNTE1ODQ1MmE4MzY4.MqZgDCiXL-IabT_UtMuQouaFS8Lddj7IT-HJceLX-Uo
+
+###
+GET  http://localhost:3003/public_key

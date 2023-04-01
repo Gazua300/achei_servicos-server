@@ -24,6 +24,7 @@ import { createUser } from './endpoints/createUser'
 import { login } from './endpoints/login'
 import { createJob } from   './endpoints/createJob'
 import { uploadJobImage } from './endpoints/uploadJobImage'
+import { getPublicKey } from './endpoints/getPublicKey'
 
 import { getAllJobs } from './endpoints/getAllJobs'
 import { getJobsByUser } from './endpoints/getJobsByUser'
@@ -43,6 +44,7 @@ app.post('/login', login)
 app.post('/jobs', createJob)
 app.post('/image/:id', upload.single('image'), uploadJobImage)
 
+app.get('/public_key', getPublicKey)
 app.get('/jobs', getAllJobs)
 app.get('/userjobs', getJobsByUser)
 app.get('/job/:id', getJobById)
