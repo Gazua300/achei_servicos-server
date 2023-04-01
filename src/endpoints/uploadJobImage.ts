@@ -15,6 +15,11 @@ export const uploadJobImage = async(req:Request, res:Response)=>{
             id: req.params.id
         })
 
+        if(!job){
+            statusCode = 404
+            throw new Error('Serviço não encontrado')
+        }
+
         if(job.provider !== user.id){
             statusCode = 401
             throw new Error('Só é possível inserir imagens nos serviços que você cadastrou!')
