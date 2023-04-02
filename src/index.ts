@@ -2,6 +2,10 @@ import express from 'express'
 import cors from 'cors'
 import multer from 'multer'
 
+// import webPush from 'web-push'
+
+// console.log(webPush.generateVAPIDKeys())
+
 
 const app = express()
 app.use(express.json())
@@ -24,12 +28,15 @@ import { createUser } from './endpoints/createUser'
 import { login } from './endpoints/login'
 import { createJob } from   './endpoints/createJob'
 import { uploadJobImage } from './endpoints/uploadJobImage'
+import { registWebNotification } from './endpoints/registWebNotification'
+import { sendWebNotification } from './endpoints/sendWebNotification'
 
 import { getAllJobs } from './endpoints/getAllJobs'
 import { getJobsByUser } from './endpoints/getJobsByUser'
 import { getJobById } from './endpoints/getJobById'
 import { getUserById } from './endpoints/getUserById'
 import { displayJobImage } from './endpoints/displayJobImage'
+import { getPublicKey } from './endpoints/getPublicKey'
 
 
 import { deleteJob } from './endpoints/deleteJob'
@@ -42,7 +49,10 @@ app.post('/signup', createUser)
 app.post('/login', login)
 app.post('/jobs', createJob)
 app.post('/image/:id', upload.single('image'), uploadJobImage)
+app.post('/rgnotification', registWebNotification)
+app.post('/send_notification', sendWebNotification)
 
+app.get('/public_key', getPublicKey)
 app.get('/jobs', getAllJobs)
 app.get('/userjobs', getJobsByUser)
 app.get('/job/:id', getJobById)
