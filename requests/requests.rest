@@ -13,7 +13,7 @@ POST https://achei-servicos-server.vercel.app/login
 Content-Type: application/json
 
 {
-  "email": "eupublicomsm@gmail.com",
+  "email": "mesmo245@gmail.com",
   "password": "123456"
 }
 
@@ -51,4 +51,5 @@ DELETE http://localhost:3003/job/497568ed-a406-4e21-953d-6ab7c31b4287
 Authorization: eyJhbGciOiJIUzI1NiJ9.NTZiM2I3ZDYtZDE2ZC00Mzc5LTkwY2MtNTE1ODQ1MmE4MzY4.MqZgDCiXL-IabT_UtMuQouaFS8Lddj7IT-HJceLX-Uo
 
 ###
-GET  http://localhost:3003/public_key
+POST  http://localhost:3003/send_notification
+Authorization: eyJhbGciOiJIUzI1NiJ9.OTI5NTFjZWEtNTBhNi00ODA0LTllZTYtMGQ1ZjQ0ZjJjN2Yy.xeuWfr03cZ5ZTxMIdZizzIfvKWd1BjHeKxKluopfXX8
